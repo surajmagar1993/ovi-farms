@@ -60,7 +60,11 @@ export default function LocationMatrix() {
       id="location"
       style={{
         padding: "6rem 0",
-        backgroundColor: "#071D17",
+        backgroundColor: "rgba(7, 29, 23, 0.72)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderTop: "1px solid rgba(212, 175, 55, 0.15)",
+        borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         color: "#FFFFFF",
         position: "relative",
       }}
@@ -108,12 +112,14 @@ export default function LocationMatrix() {
         {/* 4 Forts Heritage Banner */}
         <div
           style={{
-            backgroundColor: "#0B2A22",
+            backgroundColor: "rgba(11, 42, 34, 0.82)",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
             border: "1.5px solid rgba(238, 93, 43, 0.4)",
             borderRadius: "var(--radius-xl)",
             padding: "clamp(1.8rem, 4vw, 3rem)",
             marginBottom: "3.5rem",
-            boxShadow: "0 20px 50px rgba(0, 0, 0, 0.35)",
+            boxShadow: "0 25px 60px rgba(0, 0, 0, 0.45)",
           }}
         >
           <div
@@ -165,10 +171,12 @@ export default function LocationMatrix() {
               <div
                 key={idx}
                 style={{
-                  backgroundColor: "rgba(7, 29, 23, 0.7)",
+                  backgroundColor: "rgba(7, 29, 23, 0.82)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
                   borderRadius: "var(--radius-lg)",
                   overflow: "hidden",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  border: "1px solid rgba(255, 255, 255, 0.15)",
                   display: "flex",
                   flexDirection: "column",
                 }}
@@ -233,8 +241,10 @@ export default function LocationMatrix() {
             <div
               key={idx}
               style={{
-                backgroundColor: "#0B2A22",
-                border: "1px solid rgba(255, 255, 255, 0.12)",
+                backgroundColor: "rgba(11, 42, 34, 0.82)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                border: "1px solid rgba(212, 175, 55, 0.25)",
                 borderRadius: "var(--radius-lg)",
                 overflow: "hidden",
                 display: "flex",
@@ -281,9 +291,11 @@ export default function LocationMatrix() {
           style={{
             textAlign: "center",
             padding: "2rem",
-            backgroundColor: "rgba(255, 255, 255, 0.05)",
+            backgroundColor: "rgba(14, 35, 28, 0.85)",
+            backdropFilter: "blur(14px)",
+            WebkitBackdropFilter: "blur(14px)",
             borderRadius: "var(--radius-lg)",
-            border: "1px dashed rgba(212, 175, 55, 0.3)",
+            border: "1px dashed rgba(212, 175, 55, 0.4)",
             maxWidth: "760px",
             margin: "0 auto",
           }}

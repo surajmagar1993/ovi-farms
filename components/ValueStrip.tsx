@@ -30,16 +30,20 @@ export default function ValueStrip() {
   return (
     <section
       style={{
-        padding: "4.5rem 0",
-        backgroundColor: "var(--color-sand-50)",
+        padding: "5rem 0",
+        backgroundColor: "rgba(7, 29, 23, 0.65)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderTop: "1px solid rgba(212, 175, 55, 0.15)",
+        borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         position: "relative",
       }}
     >
       <div className="container-constrained">
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
           <span className="section-tag">★ The OVI FARMS Difference</span>
-          <h2 className="section-title">Why Discerning Families & Investors Choose Us</h2>
-          <p className="section-subtitle" style={{ margin: "0 auto" }}>
+          <h2 className="section-title light">Why Discerning Families & Investors Choose Us</h2>
+          <p className="section-subtitle light" style={{ margin: "0 auto" }}>
             We eliminate the traditional bottlenecks of rural land acquisition—offering complete legal peace of mind, resort luxury, and professionally managed agriculture.
           </p>
         </div>
@@ -57,12 +61,14 @@ export default function ValueStrip() {
               <div
                 key={idx}
                 style={{
-                  backgroundColor: "#FFFFFF",
-                  border: "1px solid var(--color-sand-200)",
+                  backgroundColor: "rgba(14, 35, 28, 0.82)",
+                  backdropFilter: "blur(16px)",
+                  WebkitBackdropFilter: "blur(16px)",
+                  border: "1px solid rgba(212, 175, 55, 0.25)",
                   borderRadius: "var(--radius-lg)",
                   padding: "2.2rem 1.8rem",
-                  boxShadow: "var(--shadow-sm)",
-                  transition: "transform 0.3s var(--ease-luxury), box-shadow 0.3s var(--ease-luxury)",
+                  boxShadow: "0 12px 32px rgba(0, 0, 0, 0.35)",
+                  transition: "transform 0.3s var(--ease-luxury), box-shadow 0.3s var(--ease-luxury), border-color 0.3s ease",
                   display: "flex",
                   flexDirection: "column",
                   gap: "1rem",
@@ -74,21 +80,21 @@ export default function ValueStrip() {
                     width: "56px",
                     height: "56px",
                     borderRadius: "14px",
-                    backgroundColor: "rgba(15, 59, 48, 0.08)",
-                    border: "1px solid rgba(212, 175, 55, 0.3)",
+                    backgroundColor: "rgba(212, 175, 55, 0.12)",
+                    border: "1px solid rgba(212, 175, 55, 0.35)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                   }}
                 >
-                  <IconComponent size={28} color="#0F3B30" />
+                  <IconComponent size={28} color="#D4AF37" />
                 </div>
 
                 <h3
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontSize: "1.3rem",
-                    color: "var(--color-primary-900)",
+                    color: "#FFFFFF",
                     fontWeight: 600,
                   }}
                 >
@@ -98,7 +104,7 @@ export default function ValueStrip() {
                 <p
                   style={{
                     fontSize: "0.92rem",
-                    color: "var(--text-secondary)",
+                    color: "rgba(255, 255, 255, 0.82)",
                     lineHeight: 1.6,
                   }}
                 >
@@ -113,8 +119,8 @@ export default function ValueStrip() {
       <style jsx>{`
         .pillar-card:hover {
           transform: translateY(-6px) translate3d(0, 0, 0);
-          box-shadow: 0 16px 36px rgba(7, 29, 23, 0.1);
-          border-color: rgba(212, 175, 55, 0.45);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+          border-color: rgba(212, 175, 55, 0.55);
         }
       `}</style>
     </section>

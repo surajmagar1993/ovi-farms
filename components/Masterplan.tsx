@@ -68,7 +68,11 @@ export default function Masterplan({
       id="masterplan"
       style={{
         padding: "6rem 0",
-        backgroundColor: "#0A1612",
+        backgroundColor: "rgba(7, 20, 16, 0.72)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderTop: "1px solid rgba(212, 175, 55, 0.15)",
+        borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         color: "#FFFFFF",
         position: "relative",
       }}
@@ -98,7 +102,9 @@ export default function Masterplan({
         {/* Masterplan Aerial Visual Showcase */}
         <div
           style={{
-            backgroundColor: "#0E1F1A",
+            backgroundColor: "rgba(14, 31, 26, 0.82)",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
             borderRadius: "var(--radius-xl)",
             border: "1.5px solid rgba(238, 93, 43, 0.35)",
             overflow: "hidden",
@@ -218,9 +224,11 @@ export default function Masterplan({
             gap: "1.2rem",
             marginBottom: "2.5rem",
             padding: "1.2rem 1.8rem",
-            backgroundColor: "#112620",
+            backgroundColor: "rgba(17, 38, 32, 0.82)",
+            backdropFilter: "blur(14px)",
+            WebkitBackdropFilter: "blur(14px)",
             borderRadius: "var(--radius-lg)",
-            border: "1px solid rgba(212, 175, 55, 0.2)",
+            border: "1px solid rgba(212, 175, 55, 0.25)",
           }}
         >
           {/* Sector Filters */}
@@ -310,7 +318,9 @@ export default function Masterplan({
                     key={plot.id}
                     onClick={() => setActivePlot(plot)}
                     style={{
-                      backgroundColor: isSelected ? "rgba(238, 93, 43, 0.18)" : "#162B24",
+                      backgroundColor: isSelected ? "rgba(238, 93, 43, 0.28)" : "rgba(22, 43, 36, 0.82)",
+                      backdropFilter: "blur(8px)",
+                      WebkitBackdropFilter: "blur(8px)",
                       border: `1.5px solid ${isSelected ? "#EE5D2B" : borderColor}`,
                       borderRadius: "var(--radius-md)",
                       padding: "1rem 0.8rem",
@@ -361,11 +371,13 @@ export default function Masterplan({
           {activePlot && (
             <div
               style={{
-                backgroundColor: "#112620",
+                backgroundColor: "rgba(17, 38, 32, 0.88)",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
                 border: "1.5px solid rgba(238, 93, 43, 0.4)",
                 borderRadius: "var(--radius-xl)",
                 padding: "2.2rem",
-                boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
+                boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
                 position: "sticky",
                 top: "100px",
               }}
@@ -408,11 +420,11 @@ export default function Masterplan({
                   display: "grid",
                   gridTemplateColumns: "1fr 1fr",
                   gap: "1rem",
-                  backgroundColor: "#071D17",
+                  backgroundColor: "rgba(7, 29, 23, 0.85)",
                   padding: "1.2rem",
                   borderRadius: "var(--radius-md)",
                   marginBottom: "1.5rem",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  border: "1px solid rgba(255,255,255,0.12)",
                 }}
               >
                 <div>

@@ -18,11 +18,13 @@ export default function Footer({ brand, contact }: FooterProps) {
   return (
     <footer
       style={{
-        backgroundColor: "#071D17",
+        backgroundColor: "rgba(7, 29, 23, 0.88)",
+        backdropFilter: "blur(18px)",
+        WebkitBackdropFilter: "blur(18px)",
         color: "#FFFFFF",
         paddingTop: "5rem",
         paddingBottom: "6rem", // extra padding for mobile action bar
-        borderTop: "1.5px solid rgba(238, 93, 43, 0.3)",
+        borderTop: "1.5px solid rgba(238, 93, 43, 0.35)",
       }}
     >
       <div className="container-constrained">

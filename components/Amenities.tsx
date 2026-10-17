@@ -86,7 +86,11 @@ export default function Amenities({ amenities }: AmenitiesProps) {
       id="amenities"
       style={{
         padding: "6rem 0",
-        backgroundColor: "var(--color-sand-50)",
+        backgroundColor: "rgba(7, 24, 19, 0.70)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderTop: "1px solid rgba(212, 175, 55, 0.15)",
+        borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         position: "relative",
       }}
     >
@@ -110,7 +114,7 @@ export default function Amenities({ amenities }: AmenitiesProps) {
             style={{
               fontFamily: "var(--font-serif)",
               fontSize: "var(--font-h2)",
-              color: "var(--color-primary-900)",
+              color: "#FFFFFF",
               marginBottom: "0.8rem",
             }}
           >
@@ -120,7 +124,7 @@ export default function Amenities({ amenities }: AmenitiesProps) {
             style={{
               fontFamily: "var(--font-sans)",
               fontSize: "var(--font-body)",
-              color: "var(--text-secondary)",
+              color: "rgba(255, 255, 255, 0.82)",
               maxWidth: "760px",
               margin: "0 auto",
               lineHeight: 1.6,
@@ -152,13 +156,13 @@ export default function Amenities({ amenities }: AmenitiesProps) {
                   border:
                     activeCategory === cat
                       ? "1.5px solid #EE5D2B"
-                      : "1px solid var(--color-sand-300)",
-                  backgroundColor: activeCategory === cat ? "#EE5D2B" : "#FFFFFF",
-                  color: activeCategory === cat ? "#FFFFFF" : "var(--color-primary-900)",
+                      : "1px solid rgba(255, 255, 255, 0.2)",
+                  backgroundColor: activeCategory === cat ? "#EE5D2B" : "rgba(255, 255, 255, 0.08)",
+                  color: "#FFFFFF",
                   boxShadow:
                     activeCategory === cat
                       ? "0 4px 14px rgba(238, 93, 43, 0.3)"
-                      : "var(--shadow-sm)",
+                      : "none",
                   transition: "all 0.25s ease",
                 }}
               >
@@ -181,11 +185,13 @@ export default function Amenities({ amenities }: AmenitiesProps) {
             <div
               key={item.id}
               style={{
-                backgroundColor: "#FFFFFF",
+                backgroundColor: "rgba(14, 35, 28, 0.82)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
                 borderRadius: "var(--radius-lg)",
                 overflow: "hidden",
-                border: "1px solid var(--color-sand-200)",
-                boxShadow: "var(--shadow-md)",
+                border: "1px solid rgba(212, 175, 55, 0.25)",
+                boxShadow: "0 12px 32px rgba(0, 0, 0, 0.35)",
                 display: "flex",
                 flexDirection: "column",
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
@@ -247,7 +253,7 @@ export default function Amenities({ amenities }: AmenitiesProps) {
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontSize: "1.3rem",
-                    color: "var(--color-primary-900)",
+                    color: "#FFFFFF",
                     marginBottom: "0.6rem",
                   }}
                 >
@@ -256,7 +262,7 @@ export default function Amenities({ amenities }: AmenitiesProps) {
                 <p
                   style={{
                     fontSize: "0.92rem",
-                    color: "var(--text-secondary)",
+                    color: "rgba(255, 255, 255, 0.82)",
                     lineHeight: 1.6,
                     flex: 1,
                   }}
@@ -271,12 +277,14 @@ export default function Amenities({ amenities }: AmenitiesProps) {
         {/* Complete Amenity Directory Checklist */}
         <div
           style={{
-            backgroundColor: "#071D17",
+            backgroundColor: "rgba(7, 29, 23, 0.82)",
+            backdropFilter: "blur(18px)",
+            WebkitBackdropFilter: "blur(18px)",
             borderRadius: "var(--radius-xl)",
             padding: "clamp(2rem, 5vw, 3.5rem)",
             color: "#FFFFFF",
-            boxShadow: "0 25px 50px rgba(7, 29, 23, 0.25)",
-            border: "1px solid rgba(212, 175, 55, 0.2)",
+            boxShadow: "0 25px 50px rgba(0, 0, 0, 0.45)",
+            border: "1px solid rgba(212, 175, 55, 0.25)",
           }}
         >
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>

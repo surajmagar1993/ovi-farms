@@ -48,7 +48,11 @@ export default function AgroServices({ services }: AgroServicesProps) {
       id="farming"
       style={{
         padding: "6rem 0",
-        backgroundColor: "var(--color-sand-100)",
+        backgroundColor: "rgba(11, 35, 28, 0.75)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderTop: "1px solid rgba(212, 175, 55, 0.15)",
+        borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         position: "relative",
       }}
     >
@@ -68,8 +72,8 @@ export default function AgroServices({ services }: AgroServicesProps) {
           >
             ★ MANAGED AGRO-LIVING & UTILITIES
           </span>
-          <h2 className="section-title">The Joy of Farmland. Zero Maintenance Hassle.</h2>
-          <p className="section-subtitle" style={{ margin: "0 auto" }}>
+          <h2 className="section-title light">The Joy of Farmland. Zero Maintenance Hassle.</h2>
+          <p className="section-subtitle light" style={{ margin: "0 auto" }}>
             Every plot at OVI FARMS includes 7 pre-planted organic fruit trees, automated Israeli drip irrigation, dedicated electricity transformer, and independent water systems.
           </p>
         </div>
@@ -77,11 +81,13 @@ export default function AgroServices({ services }: AgroServicesProps) {
         {/* Feature Split Banner: Photo + Fruit List */}
         <div
           style={{
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "rgba(14, 35, 28, 0.85)",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
             borderRadius: "var(--radius-xl)",
             overflow: "hidden",
-            border: "1px solid var(--color-sand-200)",
-            boxShadow: "var(--shadow-md)",
+            border: "1px solid rgba(212, 175, 55, 0.25)",
+            boxShadow: "0 25px 60px rgba(0, 0, 0, 0.45)",
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
             marginBottom: "3.5rem",
@@ -117,10 +123,10 @@ export default function AgroServices({ services }: AgroServicesProps) {
             <span style={{ color: "#EE5D2B", fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.1em" }}>
               PRE-PLANTED ORCHARD INVENTORY
             </span>
-            <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.85rem", color: "var(--color-primary-900)", margin: "0.4rem 0 1.2rem 0" }}>
+            <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.85rem", color: "#FFFFFF", margin: "0.4rem 0 1.2rem 0" }}>
               7 Fruit Plants Included With Every Single Plot
             </h3>
-            <p style={{ fontSize: "0.92rem", color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
+            <p style={{ fontSize: "0.92rem", color: "rgba(255, 255, 255, 0.82)", lineHeight: 1.6, marginBottom: "1.5rem" }}>
               Carefully chosen Western Ghats climate cultivars that thrive in Ghavar valley soil, maintained completely by our farm team.
             </p>
 
@@ -133,18 +139,18 @@ export default function AgroServices({ services }: AgroServicesProps) {
                     alignItems: "center",
                     justifyContent: "space-between",
                     padding: "0.75rem 1rem",
-                    backgroundColor: "var(--color-sand-50)",
+                    backgroundColor: "rgba(7, 29, 23, 0.75)",
                     borderRadius: "10px",
-                    border: "1px solid var(--color-sand-200)",
+                    border: "1px solid rgba(255, 255, 255, 0.12)",
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                     <CheckCircle2 size={18} color="#10B981" />
                     <div>
-                      <strong style={{ fontSize: "0.92rem", color: "var(--color-primary-900)" }}>
+                      <strong style={{ fontSize: "0.92rem", color: "#FFFFFF" }}>
                         {f.name}
                       </strong>
-                      <span style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginLeft: "0.5rem" }}>
+                      <span style={{ fontSize: "0.78rem", color: "rgba(255, 255, 255, 0.65)", marginLeft: "0.5rem" }}>
                         ({f.desc})
                       </span>
                     </div>
@@ -153,10 +159,11 @@ export default function AgroServices({ services }: AgroServicesProps) {
                     style={{
                       fontSize: "0.75rem",
                       fontWeight: 700,
-                      backgroundColor: "rgba(238, 93, 43, 0.1)",
+                      backgroundColor: "rgba(238, 93, 43, 0.18)",
                       color: "#EE5D2B",
                       padding: "0.2rem 0.6rem",
                       borderRadius: "var(--radius-full)",
+                      border: "1px solid rgba(238, 93, 43, 0.35)",
                     }}
                   >
                     {f.tag}
@@ -181,11 +188,13 @@ export default function AgroServices({ services }: AgroServicesProps) {
               <div
                 key={idx}
                 style={{
-                  backgroundColor: "#FFFFFF",
+                  backgroundColor: "rgba(14, 35, 28, 0.82)",
+                  backdropFilter: "blur(16px)",
+                  WebkitBackdropFilter: "blur(16px)",
                   borderRadius: "var(--radius-xl)",
-                  border: "1px solid var(--color-sand-200)",
+                  border: "1px solid rgba(212, 175, 55, 0.25)",
                   padding: "2.2rem 1.8rem",
-                  boxShadow: "var(--shadow-sm)",
+                  boxShadow: "0 12px 32px rgba(0, 0, 0, 0.35)",
                   display: "flex",
                   flexDirection: "column",
                   gap: "1rem",
@@ -197,9 +206,10 @@ export default function AgroServices({ services }: AgroServicesProps) {
                   style={{
                     display: "inline-block",
                     padding: "0.3rem 0.8rem",
-                    backgroundColor: "rgba(238, 93, 43, 0.1)",
+                    backgroundColor: "rgba(238, 93, 43, 0.18)",
                     color: "#EE5D2B",
                     borderRadius: "var(--radius-full)",
+                    border: "1px solid rgba(238, 93, 43, 0.35)",
                     fontSize: "0.72rem",
                     fontWeight: 700,
                     textTransform: "uppercase",
@@ -215,20 +225,21 @@ export default function AgroServices({ services }: AgroServicesProps) {
                     width: "52px",
                     height: "52px",
                     borderRadius: "14px",
-                    backgroundColor: "rgba(15, 59, 48, 0.08)",
+                    backgroundColor: "rgba(212, 175, 55, 0.12)",
+                    border: "1px solid rgba(212, 175, 55, 0.35)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                   }}
                 >
-                  <Icon size={26} color="#0F3B30" />
+                  <Icon size={26} color="#D4AF37" />
                 </div>
 
                 <h3
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontSize: "1.25rem",
-                    color: "var(--color-primary-900)",
+                    color: "#FFFFFF",
                   }}
                 >
                   {service.title}
@@ -238,7 +249,7 @@ export default function AgroServices({ services }: AgroServicesProps) {
                   style={{
                     fontFamily: "var(--font-sans)",
                     fontSize: "0.9rem",
-                    color: "var(--text-secondary)",
+                    color: "rgba(255, 255, 255, 0.82)",
                     lineHeight: 1.6,
                     flex: 1,
                   }}

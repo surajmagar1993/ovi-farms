@@ -18,37 +18,36 @@ export default function Hero({ heroData, onOpenBooking, onOpenBrochure }: HeroPr
   const videoUrl = heroData?.videoUrl || "/videos/hero-project.mp4";
   const fallbackVideo = heroData?.fallbackVideoUrl || "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-green-nature-and-trees-42686-large.mp4";
 
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-      videoRef.current.play().catch(() => {
-        // Autoplay policy fallback: paused until user interacts
-        setIsPlaying(false);
-      });
+    const video = document.querySelector("video");
+    if (video) {
+      setIsPlaying(!video.paused);
+      setIsMuted(video.muted);
     }
   }, [videoUrl]);
 
   const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        videoRef.current.play();
+    const video = document.querySelector("video");
+    if (video) {
+      if (video.paused) {
+        video.play().catch(() => {});
         setIsPlaying(true);
+      } else {
+        video.pause();
+        setIsPlaying(false);
       }
     }
   };
 
   const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
+    const video = document.querySelector("video");
+    if (video) {
+      video.muted = !video.muted;
+      setIsMuted(video.muted);
     }
   };
 
@@ -64,64 +63,9 @@ export default function Hero({ heroData, onOpenBooking, onOpenBrochure }: HeroPr
         paddingTop: "7.5rem",
         paddingBottom: "4.5rem",
         overflow: "hidden",
-        backgroundColor: "#071D17",
+        backgroundColor: "transparent",
       }}
     >
-      {/* Background Video Layer with Poster Fallback */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          zIndex: 1,
-          overflow: "hidden",
-        }}
-      >
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster={coverImage}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            filter: "brightness(0.55) saturate(1.2)",
-            transform: "scale(1.02)",
-            transition: "transform 8s ease",
-          }}
-        >
-          {/* User provided local hero video takes priority */}
-          <source src={videoUrl} type="video/mp4" />
-          {/* Fallback aerial landscape video */}
-          <source src={fallbackVideo} type="video/mp4" />
-        </video>
-
-        {/* Cinematic Vignette Overlays & Brand Gradient */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "radial-gradient(ellipse at center, rgba(11, 42, 34, 0.35) 0%, rgba(7, 29, 23, 0.8) 70%, #071D17 100%)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: "160px",
-            background: "linear-gradient(to top, var(--color-sand-50) 0%, rgba(7, 29, 23, 0) 100%)",
-          }}
-        />
-      </div>
 
       {/* Hero Video Floating Controls */}
       <div

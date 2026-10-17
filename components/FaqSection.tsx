@@ -34,15 +34,19 @@ export default function FaqSection() {
       id="faq"
       style={{
         padding: "6rem 0",
-        backgroundColor: "var(--color-sand-50)",
+        backgroundColor: "rgba(7, 29, 23, 0.72)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderTop: "1px solid rgba(212, 175, 55, 0.15)",
+        borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         position: "relative",
       }}
     >
       <div className="container-constrained" style={{ maxWidth: "860px" }}>
         <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <span className="section-tag">★ Common Questions</span>
-          <h2 className="section-title">Frequently Asked Questions</h2>
-          <p className="section-subtitle" style={{ margin: "0 auto" }}>
+          <h2 className="section-title light">Frequently Asked Questions</h2>
+          <p className="section-subtitle light" style={{ margin: "0 auto" }}>
             Clear answers to help you make an informed and confident decision.
           </p>
         </div>
@@ -54,11 +58,13 @@ export default function FaqSection() {
               <div
                 key={idx}
                 style={{
-                  backgroundColor: "#FFFFFF",
-                  border: isOpen ? "1.5px solid #D4AF37" : "1px solid var(--color-sand-200)",
+                  backgroundColor: "rgba(14, 35, 28, 0.82)",
+                  backdropFilter: "blur(16px)",
+                  WebkitBackdropFilter: "blur(16px)",
+                  border: isOpen ? "1.5px solid #D4AF37" : "1px solid rgba(212, 175, 55, 0.25)",
                   borderRadius: "var(--radius-lg)",
                   overflow: "hidden",
-                  boxShadow: isOpen ? "var(--shadow-md)" : "var(--shadow-sm)",
+                  boxShadow: isOpen ? "0 16px 36px rgba(0, 0, 0, 0.4)" : "0 8px 20px rgba(0, 0, 0, 0.25)",
                   transition: "all 0.25s var(--ease-luxury)",
                 }}
               >
@@ -75,7 +81,7 @@ export default function FaqSection() {
                     border: "none",
                     cursor: "pointer",
                     textAlign: "left",
-                    color: "var(--color-primary-900)",
+                    color: "#FFFFFF",
                     fontFamily: "var(--font-serif)",
                     fontSize: "1.15rem",
                     fontWeight: 600,
@@ -84,7 +90,7 @@ export default function FaqSection() {
                   <span>{faq.q}</span>
                   <ChevronDown
                     size={20}
-                    color={isOpen ? "#D4AF37" : "var(--text-muted)"}
+                    color={isOpen ? "#D4AF37" : "rgba(255, 255, 255, 0.6)"}
                     style={{
                       transform: isOpen ? "rotate(180deg)" : "none",
                       transition: "transform 0.25s ease",
@@ -97,10 +103,10 @@ export default function FaqSection() {
                   <div
                     style={{
                       padding: "0 1.6rem 1.4rem 1.6rem",
-                      color: "var(--text-secondary)",
+                      color: "rgba(255, 255, 255, 0.82)",
                       fontSize: "0.95rem",
                       lineHeight: 1.7,
-                      borderTop: "1px solid var(--color-sand-100)",
+                      borderTop: "1px solid rgba(255, 255, 255, 0.1)",
                       paddingTop: "1rem",
                     }}
                   >

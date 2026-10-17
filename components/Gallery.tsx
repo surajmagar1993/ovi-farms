@@ -112,7 +112,11 @@ export default function Gallery({ galleryItems }: GalleryProps) {
       id="gallery"
       style={{
         padding: "6rem 0",
-        backgroundColor: "#071D17",
+        backgroundColor: "rgba(7, 29, 23, 0.72)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderTop: "1px solid rgba(212, 175, 55, 0.15)",
+        borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         color: "#FFFFFF",
         position: "relative",
       }}

@@ -53,7 +53,56 @@ export default function HomePage() {
   };
 
   return (
-    <main style={{ minHeight: "100vh", position: "relative" }}>
+    <main style={{ minHeight: "100vh", position: "relative", backgroundColor: "#071D17" }}>
+      {/* GLOBAL FIXED CINEMATIC DRONE VIDEO BACKGROUND */}
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          zIndex: 0,
+          pointerEvents: "none",
+          overflow: "hidden",
+        }}
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={config?.hero?.coverImage || "/images/hero-sahyadri-valley.jpg"}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            filter: "brightness(0.52) saturate(1.2)",
+            transform: "translate3d(0, 0, 0)",
+          }}
+        >
+          <source src={config?.hero?.videoUrl || "/videos/hero-project.mp4"} type="video/mp4" />
+          <source
+            src={
+              config?.hero?.fallbackVideoUrl ||
+              "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-green-nature-and-trees-42686-large.mp4"
+            }
+            type="video/mp4"
+          />
+        </video>
+        {/* Subtle Ambient Vignette & Emerald Gradient */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(ellipse at center, rgba(7, 29, 23, 0.45) 0%, rgba(7, 29, 23, 0.82) 75%, #051410 100%)",
+          }}
+        />
+      </div>
+
+      <div style={{ position: "relative", zIndex: 1 }}>
       {/* Top Navbar */}
       <Navbar
         onOpenBooking={handleOpenGeneralBooking}
@@ -129,6 +178,7 @@ export default function HomePage() {
         onClose={() => setBrochureOpen(false)}
         whatsapp={config?.contact?.whatsapp}
       />
-    </main>
+    </div>
+  </main>
   );
 }

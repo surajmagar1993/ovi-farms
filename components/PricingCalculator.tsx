@@ -48,15 +48,19 @@ export default function PricingCalculator({ whatsapp = "+919876543210", onOpenBo
       id="pricing"
       style={{
         padding: "6rem 0",
-        backgroundColor: "var(--color-sand-50)",
+        backgroundColor: "rgba(7, 29, 23, 0.70)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderTop: "1px solid rgba(212, 175, 55, 0.15)",
+        borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         position: "relative",
       }}
     >
       <div className="container-constrained">
         <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <span className="section-tag">★ Financial Transparency</span>
-          <h2 className="section-title">Transparent Pricing & Investment Returns</h2>
-          <p className="section-subtitle" style={{ margin: "0 auto" }}>
+          <h2 className="section-title light">Transparent Pricing & Investment Returns</h2>
+          <p className="section-subtitle light" style={{ margin: "0 auto" }}>
             No hidden costs. Every plot includes legal registration support, ready boundary demarcation, automated drip irrigation, and 3 years of free managed agro-care.
           </p>
 
@@ -64,7 +68,8 @@ export default function PricingCalculator({ whatsapp = "+919876543210", onOpenBo
           <div
             style={{
               display: "inline-flex",
-              backgroundColor: "var(--color-sand-200)",
+              backgroundColor: "rgba(255, 255, 255, 0.08)",
+              border: "1px solid rgba(255, 255, 255, 0.18)",
               borderRadius: "var(--radius-full)",
               padding: "0.35rem",
               marginTop: "2.2rem",
@@ -97,11 +102,13 @@ export default function PricingCalculator({ whatsapp = "+919876543210", onOpenBo
           style={{
             maxWidth: "880px",
             margin: "0 auto",
-            backgroundColor: "#FFFFFF",
-            border: "1.5px solid rgba(212, 175, 55, 0.4)",
+            backgroundColor: "rgba(14, 35, 28, 0.85)",
+            backdropFilter: "blur(18px)",
+            WebkitBackdropFilter: "blur(18px)",
+            border: "1.5px solid rgba(212, 175, 55, 0.35)",
             borderRadius: "var(--radius-xl)",
             padding: "clamp(1.8rem, 4vw, 3rem)",
-            boxShadow: "var(--shadow-lg)",
+            boxShadow: "0 25px 60px rgba(0, 0, 0, 0.5)",
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
             gap: "2.5rem",
@@ -110,56 +117,56 @@ export default function PricingCalculator({ whatsapp = "+919876543210", onOpenBo
         >
           {/* Left: Financial Figure */}
           <div>
-            <div style={{ display: "inline-block", padding: "0.25rem 0.8rem", backgroundColor: "rgba(16, 185, 129, 0.12)", color: "#059669", borderRadius: "var(--radius-full)", fontSize: "0.8rem", fontWeight: 700, marginBottom: "0.8rem" }}>
+            <div style={{ display: "inline-block", padding: "0.25rem 0.8rem", backgroundColor: "rgba(16, 185, 129, 0.15)", color: "#10B981", borderRadius: "var(--radius-full)", fontSize: "0.8rem", fontWeight: 700, border: "1px solid rgba(16, 185, 129, 0.35)", marginBottom: "0.8rem" }}>
               ALL-INCLUSIVE FARMLAND INVESTMENT
             </div>
 
-            <div style={{ fontSize: "1.1rem", color: "var(--text-secondary)", marginBottom: "0.2rem" }}>
-              {current.acres} <span style={{ fontSize: "0.9rem" }}>({current.sqft})</span>
+            <div style={{ fontSize: "1.1rem", color: "rgba(255, 255, 255, 0.85)", marginBottom: "0.2rem" }}>
+              {current.acres} <span style={{ fontSize: "0.9rem", color: "rgba(255, 255, 255, 0.65)" }}>({current.sqft})</span>
             </div>
 
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: "clamp(2.5rem, 5vw, 3.5rem)", fontWeight: 700, color: "var(--color-primary-900)", lineHeight: 1.1, marginBottom: "0.5rem" }}>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: "clamp(2.5rem, 5vw, 3.5rem)", fontWeight: 700, color: "#FFFFFF", lineHeight: 1.1, marginBottom: "0.5rem" }}>
               ₹{current.basePrice} <span style={{ fontSize: "1.4rem", color: "#D4AF37" }}>Lakhs*</span>
             </div>
 
-            <div style={{ fontSize: "0.85rem", color: "var(--text-muted)", marginBottom: "1.8rem" }}>
+            <div style={{ fontSize: "0.85rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "1.8rem" }}>
               *Govt. stamp duty and registry registration charges as applicable.
             </div>
 
-            <div style={{ padding: "1.2rem", backgroundColor: "rgba(11, 42, 34, 0.05)", borderRadius: "var(--radius-md)", border: "1px dashed rgba(15, 59, 48, 0.25)" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#0F3B30", fontWeight: 700, fontSize: "0.9rem", marginBottom: "0.3rem" }}>
+            <div style={{ padding: "1.2rem", backgroundColor: "rgba(7, 29, 23, 0.75)", borderRadius: "var(--radius-md)", border: "1px dashed rgba(212, 175, 55, 0.35)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#FFFFFF", fontWeight: 700, fontSize: "0.9rem", marginBottom: "0.3rem" }}>
                 <TrendingUp size={18} color="#D4AF37" />
                 <span>Projected 5-Year Capital Valuation:</span>
               </div>
               <div style={{ fontFamily: "var(--font-mono)", fontSize: "1.3rem", fontWeight: 700, color: "#10B981" }}>
                 {current.growth5yr}
               </div>
-              <div style={{ fontSize: "0.78rem", color: "var(--text-secondary)" }}>
+              <div style={{ fontSize: "0.78rem", color: "rgba(255, 255, 255, 0.7)" }}>
                 Based on historical 14-18% CAGR for infrastructure-connected green belts.
               </div>
             </div>
           </div>
 
           {/* Right: Inclusions & CTA */}
-          <div style={{ borderLeft: "1px solid var(--color-sand-200)", paddingLeft: "clamp(0rem, 3vw, 2rem)" }}>
-            <div style={{ fontSize: "0.85rem", color: "#0F3B30", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1.2rem" }}>
+          <div style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.12)", paddingLeft: "clamp(0rem, 3vw, 2rem)" }}>
+            <div style={{ fontSize: "0.85rem", color: "#D4AF37", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1.2rem" }}>
               WHAT YOUR INVESTMENT INCLUDES:
             </div>
 
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.9rem", marginBottom: "2rem" }}>
-              <li style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", fontSize: "0.92rem", color: "var(--text-primary)" }}>
+              <li style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", fontSize: "0.92rem", color: "#FFFFFF" }}>
                 <Check size={18} color="#10B981" style={{ flexShrink: 0, marginTop: "2px" }} />
                 <span><strong>100% Mutation & Clear Title:</strong> Individual demarcation with physical corner boundary stones.</span>
               </li>
-              <li style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", fontSize: "0.92rem", color: "var(--text-primary)" }}>
+              <li style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", fontSize: "0.92rem", color: "#FFFFFF" }}>
                 <Check size={18} color="#10B981" style={{ flexShrink: 0, marginTop: "2px" }} />
                 <span><strong>3 Years Free Managed Farming:</strong> ₹{current.maintenanceValue} Lakhs maintenance package included at ₹0 cost.</span>
               </li>
-              <li style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", fontSize: "0.92rem", color: "var(--text-primary)" }}>
+              <li style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", fontSize: "0.92rem", color: "#FFFFFF" }}>
                 <Check size={18} color="#10B981" style={{ flexShrink: 0, marginTop: "2px" }} />
                 <span><strong>Pre-Planted Fruit Grove:</strong> {current.plantations}.</span>
               </li>
-              <li style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", fontSize: "0.92rem", color: "var(--text-primary)" }}>
+              <li style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", fontSize: "0.92rem", color: "#FFFFFF" }}>
                 <Check size={18} color="#10B981" style={{ flexShrink: 0, marginTop: "2px" }} />
                 <span><strong>Lifetime Club Membership:</strong> Full family access to pool, restaurant, co-working, and stargazing deck.</span>
               </li>
@@ -197,17 +204,17 @@ export default function PricingCalculator({ whatsapp = "+919876543210", onOpenBo
           font-family: var(--font-sans);
           font-size: 0.88rem;
           font-weight: 600;
-          color: var(--text-secondary);
+          color: rgba(255, 255, 255, 0.75);
           cursor: pointer;
           transition: all 0.25s ease;
         }
         .calc-tab:hover {
-          color: var(--color-primary-900);
+          color: #ffffff;
         }
         .calc-tab.active {
-          background-color: var(--color-primary-700);
+          background-color: #ee5d2b;
           color: #ffffff;
-          box-shadow: 0 4px 12px rgba(15, 59, 48, 0.25);
+          box-shadow: 0 4px 14px rgba(238, 93, 43, 0.4);
         }
       `}</style>
     </section>
