@@ -30,7 +30,7 @@ Thumbs.db
 
 # Large Media Files (>100MB exceeds GitHub push limits)
 /video.mp4
-/public/videos/*.mp4
+/public/videos/hero-project.mp4
 /test_*
 test_*
 /scratch

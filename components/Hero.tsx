@@ -15,7 +15,7 @@ export default function Hero({ heroData, onOpenBooking, onOpenBrochure }: HeroPr
     heroData?.subheadline ||
     "Rare large-format plotted estates (11,000 sq.ft onwards) in the monsoon-rich valley of Ghavar, near Bhor. Encircled by legendary Maratha forts, just 40 minutes from Pune.";
   const coverImage = heroData?.coverImage || "/images/hero-sahyadri-valley.jpg";
-  const videoUrl = heroData?.videoUrl || "/videos/hero-project.mp4";
+  const videoUrl = heroData?.videoUrl || "/videos/hero-drone-web.mp4";
   const fallbackVideo = heroData?.fallbackVideoUrl || "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-green-nature-and-trees-42686-large.mp4";
 
   const [isPlaying, setIsPlaying] = useState(true);
@@ -423,6 +423,7 @@ export default function Hero({ heroData, onOpenBooking, onOpenBrochure }: HeroPr
               poster={coverImage}
             >
               <source src={videoUrl} type="video/mp4" />
+              <source src="/videos/hero-drone-720p.mp4" type="video/mp4" />
               <source src={fallbackVideo} type="video/mp4" />
             </video>
           </div>

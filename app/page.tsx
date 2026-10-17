@@ -24,6 +24,15 @@ export default function HomePage() {
   const [bookingOpen, setBookingOpen] = useState(false);
   const [brochureOpen, setBrochureOpen] = useState(false);
   const [selectedPlot, setSelectedPlot] = useState<any>(null);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   useEffect(() => {
     // Fetch live site config & plots from our persistent store
@@ -68,6 +77,7 @@ export default function HomePage() {
         }}
       >
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
@@ -82,7 +92,9 @@ export default function HomePage() {
             transform: "translate3d(0, 0, 0)",
           }}
         >
-          <source src={config?.hero?.videoUrl || "/videos/hero-project.mp4"} type="video/mp4" />
+          <source src={config?.hero?.videoUrl || "/videos/hero-drone-web.mp4"} type="video/mp4" />
+          <source src="/videos/hero-drone-web.mp4" type="video/mp4" />
+          <source src="/videos/hero-drone-720p.mp4" type="video/mp4" />
           <source
             src={
               config?.hero?.fallbackVideoUrl ||
