@@ -16,12 +16,12 @@ export default function FaqSection() {
       a: "Yes. Farmhouse construction of up to standard permissible floor area is officially sanctioned. You can build a private luxury wooden cottage, container villa, or brick farmhouse. Our architects also offer ready-to-construct eco-villa blueprints if desired.",
     },
     {
-      q: "What is included in the 3-Year Complimentary Managed Agriculture?",
-      a: "For the first 3 full years, our team of dedicated agronomists, soil specialists, and gardeners maintains your 25+ fruit trees (pruning, organic compost, bio-pest control, drip irrigation) at zero extra cost. After 3 years, you can renew at a nominal cooperative society maintenance fee.",
+      q: "What agricultural plantations are provided with each plot?",
+      a: "Each plot includes 7 fruit plants with drip irrigation, including Kesar Mango, Rajapuri Mango, Chiku, Jackfruit, and Malaysian Green Dwarf Coconut.",
     },
     {
-      q: "What is the water supply and electrical infrastructure?",
-      a: "OVI FARMS features multiple heavy-yield dedicated community borewells with certified sweet drinking groundwater (TDS < 250 ppm) connected via automated drip irrigation to every plot. Electricity connection and solar street lighting lines are fully operational.",
+      q: "What water supply and electrical infrastructure is provided?",
+      a: "OVI FARMS features a separate water supply system and electricity supply with a dedicated transformer installed for the community, along with wide durable concrete internal roads and engineered storm drainage.",
     },
     {
       q: "How are the plots demarcated to prevent boundary disputes?",

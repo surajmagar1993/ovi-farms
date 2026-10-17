@@ -68,17 +68,19 @@ export default function Amenities({ amenities }: AmenitiesProps) {
 
   const amenityChecklist = [
     { title: "Infinity Swimming Pool", icon: <Waves size={16} color="#EE5D2B" /> },
-    { title: "Poolside Relaxation Deck", icon: <Sparkles size={16} color="#EE5D2B" /> },
-    { title: "Tournament Pool Table", icon: <Trophy size={16} color="#EE5D2B" /> },
+    { title: "Poolside Leisure & Relaxation Area", icon: <Sparkles size={16} color="#EE5D2B" /> },
+    { title: "Pool Table", icon: <Trophy size={16} color="#EE5D2B" /> },
+    { title: "Carrom Board", icon: <Trophy size={16} color="#EE5D2B" /> },
+    { title: "Air Hockey", icon: <Trophy size={16} color="#EE5D2B" /> },
+    { title: "Table Tennis", icon: <Trophy size={16} color="#EE5D2B" /> },
     { title: "PlayStation Gaming Zone", icon: <Gamepad2 size={16} color="#EE5D2B" /> },
-    { title: "Air Hockey & Table Tennis", icon: <Trophy size={16} color="#EE5D2B" /> },
-    { title: "Pickleball & Basketball Court", icon: <Dumbbell size={16} color="#EE5D2B" /> },
-    { title: "Volleyball Court", icon: <Dumbbell size={16} color="#EE5D2B" /> },
+    { title: "Outdoor Play Station", icon: <Sparkles size={16} color="#EE5D2B" /> },
+    { title: "Outdoor Gazebo", icon: <Compass size={16} color="#EE5D2B" /> },
     { title: "Machaan for Bird Watching", icon: <Eye size={16} color="#EE5D2B" /> },
-    { title: "Outdoor Sunset Gazebos", icon: <Compass size={16} color="#EE5D2B" /> },
-    { title: "Sunken Barbecue Terrace", icon: <Flame size={16} color="#EE5D2B" /> },
-    { title: "Children’s Adventure Play Area", icon: <Sparkles size={16} color="#EE5D2B" /> },
-    { title: "Limited Club Membership", icon: <Sparkles size={16} color="#EE5D2B" /> },
+    { title: "Volleyball Court", icon: <Dumbbell size={16} color="#EE5D2B" /> },
+    { title: "Basketball Court", icon: <Dumbbell size={16} color="#EE5D2B" /> },
+    { title: "Landscaped Green & Recreation Areas", icon: <Sparkles size={16} color="#EE5D2B" /> },
+    { title: "Children’s Play Area", icon: <Sparkles size={16} color="#EE5D2B" /> },
   ];
 
   return (
@@ -128,7 +130,7 @@ export default function Amenities({ amenities }: AmenitiesProps) {
               lineHeight: 1.6,
             }}
           >
-            The centerpiece clubhouse features an edge-less infinity pool overlooking the valley, indoor leisure lounges, stargazing decks, multi-sport courts, and limited club membership for estate owners.
+            The centerpiece clubhouse features an edge-less infinity pool overlooking the valley, indoor leisure lounges, and multi-purpose entertainment decks. Limited club membership for estate plot owners.
           </p>
 
           {/* Category Filters */}

@@ -11,8 +11,8 @@ interface MobileActionBarProps {
 
 export default function MobileActionBar({
   onOpenBooking,
-  phone = "+91 98765 43210",
-  whatsapp = "+919876543210",
+  phone = "+91 73505 00045",
+  whatsapp = "+917350500045",
 }: MobileActionBarProps) {
   return (
     <aside

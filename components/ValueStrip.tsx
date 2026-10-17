@@ -1,29 +1,29 @@
 "use client";
 
 import React from "react";
-import { FileCheck, Sprout, Palmtree, TrendingUp } from "lucide-react";
+import { ShieldCheck, CheckCircle2, Droplets, Waves } from "lucide-react";
 
 export default function ValueStrip() {
   const pillars = [
     {
-      icon: FileCheck,
-      title: "100% Legally Vetted Titles",
-      desc: "Each plot has individual demarcation, clear title deed vetted by high court advocates, and immediate mutation registration in your name.",
+      icon: ShieldCheck,
+      title: "24x7 Security & Grand Archway",
+      desc: "Manned entry gates, perimeter fencing, continuous CCTV surveillance, and an imposing natural stone & wood entrance landmark.",
     },
     {
-      icon: Sprout,
-      title: "24/7 Managed Organic Farming",
-      desc: "Professional agronomists manage automated drip irrigation, fruit pruning, and soil care. Enjoy fresh seasonal organic harvests delivered to your home.",
+      icon: CheckCircle2,
+      title: "Clear Demarcation & Pegging",
+      desc: "Every plot is cleanly surveyed, pegged, and enclosed with live hedge boundaries with clear individual 7/12 title mutation.",
     },
     {
-      icon: Palmtree,
-      title: "Country Club & Resort Amenities",
-      desc: "Exclusive access to the Central Clubhouse, Horizon Swimming Pool, Stargazing Observatory, Organic Café, and children's eco-adventure park.",
+      icon: Droplets,
+      title: "Separate Water & Transformer",
+      desc: "Independent water supply system with dedicated drip lines and electricity supply powered by a dedicated transformer.",
     },
     {
-      icon: TrendingUp,
-      title: "High Capital Appreciation",
-      desc: "Strategically located along fast-growing infrastructure corridors, combining real agro-yields with robust long-term land wealth appreciation.",
+      icon: Waves,
+      title: "Clubhouse & Infinity Pool",
+      desc: "Architectural centerpiece featuring an edge-less infinity pool overlooking the Sahyadri valley and 14 indoor & outdoor club amenities.",
     },
   ];
 

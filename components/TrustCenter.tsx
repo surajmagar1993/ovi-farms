@@ -1,33 +1,33 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, FileText, Droplet, TestTube, Scale, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Droplets, Zap, Scale, CheckCircle2 } from "lucide-react";
 
 export default function TrustCenter() {
   const documents = [
     {
       icon: Scale,
-      title: "Clear Pedigree & Title Deed",
-      detail: "40+ Years Historical Title Search",
-      desc: "Title searched and vetted by senior High Court advocates, ensuring zero legal encumbrance and immediate individual registerability.",
+      title: "Clear Pedigree & 7/12 Title Mutation",
+      detail: "Clear-Title Registered Estate • Bhor Taluka",
+      desc: "Every plot comes with clean individual 7/12 land records, mutation entries, and clear undisputed title ownership in Ghavar valley.",
     },
     {
       icon: ShieldCheck,
-      title: "RERA Registered & Sanctioned",
-      detail: "PRM/KA/RERA/1251/310/PR/220815/005124",
-      desc: "Full statutory compliance, sanctioned layout plan with 40-ft and 50-ft dedicated avenue road buffers.",
+      title: "Survey Demarcation & Master Layout",
+      detail: "Cleanly Surveyed & Pegged Boundaries",
+      desc: "Every plot is cleanly surveyed, boundary-pegged, enclosed with hedge boundaries, and connected to wide concrete internal roads.",
     },
     {
-      icon: Droplet,
-      title: "Sweet Groundwater Purity Report",
-      detail: "Certified Lab Test (TDS < 250 PPM)",
-      desc: "Multiple high-yield sweet water aquifers tested by accredited geological laboratories, guaranteeing abundant potable water.",
+      icon: Droplets,
+      title: "Separate Water Supply System",
+      detail: "Dedicated Water Pipelines & Drip Network",
+      desc: "Independent water supply system with Israeli drip irrigation network delivering reliable, high-volume water supply to each individual plot.",
     },
     {
-      icon: TestTube,
-      title: "Agricultural Soil Health Card",
-      detail: "Rich Red Loam Soil (pH 6.8 - 7.2)",
-      desc: "High organic matter carbon index, ideal for high-yield organic horticulture (Alphonso mangoes, avocadoes, guavas).",
+      icon: Zap,
+      title: "Electricity with Separate Transformer",
+      detail: "Dedicated Community Transformer",
+      desc: "High-capacity electrical supply powered by a separate transformer installed exclusively for the OVI FARMS community.",
     },
   ];
 

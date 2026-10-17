@@ -11,25 +11,24 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://ovifarms.com"),
   title: {
-    default: "OVI FARMS — Luxury Managed Farmhouse Plots & Countryside Estates",
+    default: "OVI FARMS — Exclusive Land Plotting Near Bhor • 40 Minutes From Pune",
     template: "%s | OVI FARMS",
   },
   description:
-    "Buy premium clear-title managed farmhouse plots at OVI FARMS. Features 24/7 managed organic farming, luxury clubhouse, horizon pool, and high appreciation. Just 60 mins from airport. Book free site visit with complimentary cab.",
+    "Where Heritage Meets Living. Rare large-format plotted estates (11,000 sq.ft onwards) in Ghavar valley, near Bhor. Encircled by Rajgad, Torna, Sinhagad & Purandar forts, just 40 minutes from Pune. Clubhouse, infinity pool, and 7 fruit plants per plot.",
   keywords: [
     "OVI FARMS",
-    "farmhouse plots for sale",
-    "managed farmland",
-    "gated community farmland",
-    "agriculture land near airport",
-    "luxury countryside estates",
-    "organic farming plots",
-    "weekend villa land",
-    "clear title agricultural land",
+    "farmhouse plots near Bhor",
+    "land plotting Pune",
+    "plots near Rajgad fort",
+    "Ghavar valley plots",
+    "premium plots 40 minutes from Pune",
+    "plots near Torna fort",
+    "clear title agricultural land Bhor",
   ],
-  authors: [{ name: "OVI FARMS Realty" }],
+  authors: [{ name: "OVI FARMS" }],
   creator: "OVI FARMS",
-  publisher: "OVI FARMS Realty Pvt Ltd",
+  publisher: "OVI FARMS • Premier Farmstead Development",
   formatDetection: {
     email: true,
     address: true,
@@ -53,17 +52,17 @@ export const metadata: Metadata = {
     google: "google-site-verification-ovifarms-official",
   },
   openGraph: {
-    title: "OVI FARMS — Luxury Managed Farmhouse Plots & Countryside Estates",
+    title: "OVI FARMS — Exclusive Land Plotting Near Bhor • 40 Minutes From Pune",
     description:
-      "Clear-title managed farmhouse plots surrounded by flourishing organic orchards and resort amenities. Schedule your private site visit.",
+      "Where Heritage Meets Living. Rare large-format plotted estates (11,000 sq.ft onwards) in Ghavar valley, near Bhor. Encircled by Rajgad & Torna forts.",
     url: "https://ovifarms.com",
     siteName: "OVI FARMS",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&fm=webp&w=1200&q=80",
+        url: "/images/hero-sahyadri-valley.jpg",
         width: 1200,
         height: 630,
-        alt: "OVI FARMS Estate Orchards and Countryside Sanctuary",
+        alt: "OVI FARMS Sahyadri Valley Plotted Estate",
       },
     ],
     locale: "en_IN",
@@ -71,9 +70,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "OVI FARMS — Luxury Managed Farmhouse Plots",
-    description: "Clear-title managed farmhouse plots with 24/7 agro-care & resort club life.",
-    images: ["https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&fm=webp&w=1200&q=80"],
+    title: "OVI FARMS — Exclusive Land Plotting Near Bhor",
+    description: "Where Heritage Meets Living. Plots from 11,000 sq.ft onwards, 40 mins from Pune.",
+    images: ["/images/hero-sahyadri-valley.jpg"],
   },
 };
 
@@ -87,25 +86,25 @@ export default function RootLayout({
     "@type": "RealEstateAgent",
     "@id": "https://ovifarms.com/#organization",
     name: "OVI FARMS",
-    legalName: "OVI FARMS Realty & Countryside Estates",
+    legalName: "OVI FARMS — Premier Farmstead Development",
     url: "https://ovifarms.com",
-    logo: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&fm=webp&w=200&q=80",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&fm=webp&w=1200&q=80",
-    description: "Developer of premium clear-title managed farmland and luxury farmhouse plot communities.",
-    telephone: "+91 98765 43210",
-    email: "inquiries@ovifarms.com",
+    logo: "https://ovifarms.com/images/ovi-farms-logo.png",
+    image: "https://ovifarms.com/images/hero-sahyadri-valley.jpg",
+    description: "Exclusive land plotting near Bhor, 40 minutes from Pune. Rare large-format plotted estates (11,000 sq.ft onwards) in Ghavar valley.",
+    telephone: "+91 73505 00045",
+    email: "surendra@ovifarms.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "OVI FARMS Estate, NH-44 Green Belt Corridor",
-      addressLocality: "Bangalore Rural Corridor",
-      addressRegion: "KA",
-      postalCode: "562110",
+      streetAddress: "Ghavar Region, Near Bhor",
+      addressLocality: "Bhor, Pune",
+      addressRegion: "MH",
+      postalCode: "412206",
       addressCountry: "IN",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "13.2000",
-      longitude: "77.7000",
+      latitude: "18.1500",
+      longitude: "73.8500",
     },
     openingHoursSpecification: [
       {
@@ -124,7 +123,7 @@ export default function RootLayout({
       },
     ],
     priceRange: "₹₹₹₹",
-    areaServed: ["Bangalore", "Hyderabad", "Mumbai", "Delhi-NCR", "India"],
+    areaServed: ["Pune", "Mumbai", "Maharashtra", "India"],
   };
 
   const schemaFaq = {
@@ -149,18 +148,18 @@ export default function RootLayout({
       },
       {
         "@type": "Question",
-        name: "What is included in the 3-Year Complimentary Managed Agriculture?",
+        name: "What agricultural plantations are provided with each plot?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "For the first 3 full years, our team of dedicated agronomists, soil specialists, and gardeners maintains your 25+ fruit trees (pruning, organic compost, bio-pest control, drip irrigation) at zero extra cost.",
+          text: "Each plot includes 7 pre-planted fruit plants with dedicated drip irrigation, including Kesar Mango, Rajapuri Mango, Chiku, Jackfruit, and Malaysian Green Dwarf Coconut.",
         },
       },
       {
         "@type": "Question",
-        name: "What is the water supply and electrical infrastructure?",
+        name: "What water supply and electrical infrastructure is provided?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "OVI FARMS features multiple heavy-yield dedicated community borewells with certified sweet drinking groundwater (TDS < 250 ppm) connected via automated drip irrigation to every plot. Electricity connection and solar street lighting lines are fully operational.",
+          text: "OVI FARMS features a separate water supply system and electricity supply with a dedicated transformer installed for the estate.",
         },
       },
       {

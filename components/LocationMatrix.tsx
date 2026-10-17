@@ -7,50 +7,57 @@ export default function LocationMatrix() {
   const forts = [
     {
       name: "Rajgad Fort",
-      subtitle: "West View • Historical Seat of Maratha Power",
-      time: "15 Mins",
-      desc: "Iconic fortress where Chhatrapati Shivaji Maharaj resided for over 25 years. Visible directly from our estate viewpoints.",
+      subtitle: "Historical Seat of Power • West View",
+      time: "Within 15 Mins",
+      desc: "Historical seat of power and iconic trekking destination, located just 15 minutes away from the project.",
       image: "/images/rajgad-torna-forts.jpg",
     },
     {
-      name: "Torna Fort",
-      subtitle: "North-West View • Prachandagad Citadel",
-      time: "15 Mins",
-      desc: "The highest hill fort in Pune district, offering world-class weekend trekking and misty monsoon waterfall trails.",
+      name: "Torana Fort",
+      subtitle: "Highest Hill Fort • North-West View",
+      time: "Within 15 Mins",
+      desc: "Highest hill fort offering legendary Sahyadri trekking trails, located just 15 minutes away from the project.",
       image: "/images/rajgad-torna-forts.jpg",
     },
     {
-      name: "Sinhagad & Purandar",
-      subtitle: "Legendary Citadels • Surrounding Ridge",
+      name: "Sinhagad Fort",
+      subtitle: "Legendary Citadel • Pune Corridor",
       time: "Pune Corridor",
-      desc: "Part of the protected historic Sahyadri mountain arc that shelters the serene micro-climate of Ghavar valley.",
+      desc: "Legendary Maratha citadel framing the mountain corridor towards Pune city.",
+      image: "/images/hero-sahyadri-valley.jpg",
+    },
+    {
+      name: "Purandar Fort",
+      subtitle: "Iconic Hill Fort • East View",
+      time: "East View",
+      desc: "Iconic hill fortress anchoring the eastern mountain horizon around Ghavar valley.",
       image: "/images/scenic-valley-plots.jpg",
     },
   ];
 
   const connectivity = [
     {
-      title: "Pune City",
-      badge: "40 Min Drive",
-      desc: "Effortless direct connectivity to Swargate, Kothrud, and Baner for smooth weekend family retreats.",
-      image: "/images/hero-sahyadri-valley.jpg",
-    },
-    {
-      title: "Nasrapur Commercial Junction",
-      badge: "20 Mins",
-      desc: "Located on NH-48 with supermarkets, banking, emergency medical care, and fuel stations.",
-      image: "/images/nasrapur-highway.jpg",
-    },
-    {
       title: "Proposed Ring Road",
-      badge: "Just 8 KM",
-      desc: "Upcoming high-speed expressway loop creating massive future infrastructure appreciation.",
+      badge: "Approx 8 KM",
+      desc: "Located approximately 8 km from the proposed Ring Road, offering strong future connectivity and convenient access.",
       image: "/images/proposed-ring-road.jpg",
     },
     {
+      title: "20 Minutes from Nasrapur",
+      badge: "20 Mins",
+      desc: "Conveniently located just 20 minutes from Nasrapur, ensuring quick access while staying close to nature.",
+      image: "/images/nasrapur-highway.jpg",
+    },
+    {
+      title: "Scenic Valley-View Plots",
+      badge: "On-Site",
+      desc: "Enjoy scenic valley-view plots surrounded by open landscapes, natural beauty, and peaceful surroundings.",
+      image: "/images/scenic-valley-plots.jpg",
+    },
+    {
       title: "Concrete Internal Roads",
-      badge: "100% Paved",
-      desc: "Wide, durable concrete roads with tree-lined curbs leading directly to every individual plot gate.",
+      badge: "Smooth Access",
+      desc: "Wide, durable concrete roads for smooth access throughout the project.",
       image: "/images/concrete-internal-roads.jpg",
     },
   ];
