@@ -1,0 +1,18 @@
+# Apache / GoDaddy Server Media Streaming Configuration
+<IfModule mod_mime.c>
+  AddType video/mp4 .mp4
+  AddType video/webm .webm
+  AddType video/ogg .ogv
+  AddType application/pdf .pdf
+  AddType image/webp .webp
+  AddType image/avif .avif
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Enable byte-range streaming for mobile & desktop video scrub
+  Header set Accept-Ranges bytes
+  # Cache static media for performance
+  <FilesMatch "\.(mp4|webm|webp|avif|jpg|jpeg|png|pdf)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
+</IfModule>
