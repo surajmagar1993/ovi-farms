@@ -68,9 +68,7 @@ export default function Masterplan({
       id="masterplan"
       style={{
         padding: "6rem 0",
-        backgroundColor: "rgba(7, 20, 16, 0.72)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
+        backgroundColor: "transparent",
         borderTop: "1px solid rgba(212, 175, 55, 0.15)",
         borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         color: "#FFFFFF",
@@ -102,9 +100,9 @@ export default function Masterplan({
         {/* Masterplan Aerial Visual Showcase */}
         <div
           style={{
-            backgroundColor: "rgba(14, 31, 26, 0.82)",
-            backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
+            backgroundColor: "rgba(7, 29, 23, 0.65)",
+            backdropFilter: "blur(14px)",
+            WebkitBackdropFilter: "blur(14px)",
             borderRadius: "var(--radius-xl)",
             border: "1.5px solid rgba(238, 93, 43, 0.35)",
             overflow: "hidden",
@@ -224,7 +222,7 @@ export default function Masterplan({
             gap: "1.2rem",
             marginBottom: "2.5rem",
             padding: "1.2rem 1.8rem",
-            backgroundColor: "rgba(17, 38, 32, 0.82)",
+            backgroundColor: "rgba(7, 29, 23, 0.65)",
             backdropFilter: "blur(14px)",
             WebkitBackdropFilter: "blur(14px)",
             borderRadius: "var(--radius-lg)",
@@ -371,9 +369,9 @@ export default function Masterplan({
           {activePlot && (
             <div
               style={{
-                backgroundColor: "rgba(17, 38, 32, 0.88)",
-                backdropFilter: "blur(20px)",
-                WebkitBackdropFilter: "blur(20px)",
+                backgroundColor: "rgba(7, 29, 23, 0.75)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
                 border: "1.5px solid rgba(238, 93, 43, 0.4)",
                 borderRadius: "var(--radius-xl)",
                 padding: "2.2rem",
@@ -420,7 +418,7 @@ export default function Masterplan({
                   display: "grid",
                   gridTemplateColumns: "1fr 1fr",
                   gap: "1rem",
-                  backgroundColor: "rgba(7, 29, 23, 0.85)",
+                  backgroundColor: "rgba(4, 18, 14, 0.70)",
                   padding: "1.2rem",
                   borderRadius: "var(--radius-md)",
                   marginBottom: "1.5rem",

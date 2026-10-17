@@ -34,9 +34,7 @@ export default function FaqSection() {
       id="faq"
       style={{
         padding: "6rem 0",
-        backgroundColor: "rgba(7, 29, 23, 0.72)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
+        backgroundColor: "transparent",
         borderTop: "1px solid rgba(212, 175, 55, 0.15)",
         borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         position: "relative",
@@ -58,9 +56,9 @@ export default function FaqSection() {
               <div
                 key={idx}
                 style={{
-                  backgroundColor: "rgba(14, 35, 28, 0.82)",
-                  backdropFilter: "blur(16px)",
-                  WebkitBackdropFilter: "blur(16px)",
+                  backgroundColor: "rgba(7, 29, 23, 0.60)",
+                  backdropFilter: "blur(14px)",
+                  WebkitBackdropFilter: "blur(14px)",
                   border: isOpen ? "1.5px solid #D4AF37" : "1px solid rgba(212, 175, 55, 0.25)",
                   borderRadius: "var(--radius-lg)",
                   overflow: "hidden",

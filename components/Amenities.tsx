@@ -86,9 +86,7 @@ export default function Amenities({ amenities }: AmenitiesProps) {
       id="amenities"
       style={{
         padding: "6rem 0",
-        backgroundColor: "rgba(7, 24, 19, 0.70)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
+        backgroundColor: "transparent",
         borderTop: "1px solid rgba(212, 175, 55, 0.15)",
         borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         position: "relative",
@@ -185,9 +183,9 @@ export default function Amenities({ amenities }: AmenitiesProps) {
             <div
               key={item.id}
               style={{
-                backgroundColor: "rgba(14, 35, 28, 0.82)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
+                backgroundColor: "rgba(7, 29, 23, 0.60)",
+                backdropFilter: "blur(14px)",
+                WebkitBackdropFilter: "blur(14px)",
                 borderRadius: "var(--radius-lg)",
                 overflow: "hidden",
                 border: "1px solid rgba(212, 175, 55, 0.25)",
@@ -277,9 +275,9 @@ export default function Amenities({ amenities }: AmenitiesProps) {
         {/* Complete Amenity Directory Checklist */}
         <div
           style={{
-            backgroundColor: "rgba(7, 29, 23, 0.82)",
-            backdropFilter: "blur(18px)",
-            WebkitBackdropFilter: "blur(18px)",
+            backgroundColor: "rgba(7, 29, 23, 0.65)",
+            backdropFilter: "blur(14px)",
+            WebkitBackdropFilter: "blur(14px)",
             borderRadius: "var(--radius-xl)",
             padding: "clamp(2rem, 5vw, 3.5rem)",
             color: "#FFFFFF",

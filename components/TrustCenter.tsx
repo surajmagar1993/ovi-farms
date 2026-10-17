@@ -36,9 +36,7 @@ export default function TrustCenter() {
       id="trust"
       style={{
         padding: "6rem 0",
-        backgroundColor: "rgba(10, 26, 21, 0.75)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
+        backgroundColor: "transparent",
         borderTop: "1px solid rgba(212, 175, 55, 0.15)",
         borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         position: "relative",
@@ -66,9 +64,9 @@ export default function TrustCenter() {
               <div
                 key={idx}
                 style={{
-                  backgroundColor: "rgba(14, 35, 28, 0.82)",
-                  backdropFilter: "blur(16px)",
-                  WebkitBackdropFilter: "blur(16px)",
+                  backgroundColor: "rgba(7, 29, 23, 0.60)",
+                  backdropFilter: "blur(14px)",
+                  WebkitBackdropFilter: "blur(14px)",
                   borderRadius: "var(--radius-xl)",
                   border: "1px solid rgba(212, 175, 55, 0.25)",
                   padding: "2.2rem 1.8rem",

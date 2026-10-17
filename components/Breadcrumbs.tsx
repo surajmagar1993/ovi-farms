@@ -29,7 +29,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
       aria-label="Breadcrumb"
       style={{
         padding: "1rem 0",
-        backgroundColor: "rgba(11, 42, 34, 0.4)",
+        backgroundColor: "transparent",
         borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
       }}
     >

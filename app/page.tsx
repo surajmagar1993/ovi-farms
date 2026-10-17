@@ -78,7 +78,7 @@ export default function HomePage() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            filter: "brightness(0.52) saturate(1.2)",
+            filter: "brightness(0.82) contrast(1.05) saturate(1.15)",
             transform: "translate3d(0, 0, 0)",
           }}
         >
@@ -91,13 +91,13 @@ export default function HomePage() {
             type="video/mp4"
           />
         </video>
-        {/* Subtle Ambient Vignette & Emerald Gradient */}
+        {/* Subtle Ambient Vignette & Emerald Tint */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(ellipse at center, rgba(7, 29, 23, 0.45) 0%, rgba(7, 29, 23, 0.82) 75%, #051410 100%)",
+              "linear-gradient(to bottom, rgba(7, 29, 23, 0.22) 0%, rgba(7, 29, 23, 0.32) 40%, rgba(7, 29, 23, 0.45) 100%)",
           }}
         />
       </div>

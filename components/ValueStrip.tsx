@@ -31,9 +31,7 @@ export default function ValueStrip() {
     <section
       style={{
         padding: "5rem 0",
-        backgroundColor: "rgba(7, 29, 23, 0.65)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
+        backgroundColor: "transparent",
         borderTop: "1px solid rgba(212, 175, 55, 0.15)",
         borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         position: "relative",
@@ -42,8 +40,8 @@ export default function ValueStrip() {
       <div className="container-constrained">
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
           <span className="section-tag">★ The OVI FARMS Difference</span>
-          <h2 className="section-title light">Why Discerning Families & Investors Choose Us</h2>
-          <p className="section-subtitle light" style={{ margin: "0 auto" }}>
+          <h2 className="section-title light" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.7)" }}>Why Discerning Families & Investors Choose Us</h2>
+          <p className="section-subtitle light" style={{ margin: "0 auto", textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}>
             We eliminate the traditional bottlenecks of rural land acquisition—offering complete legal peace of mind, resort luxury, and professionally managed agriculture.
           </p>
         </div>
@@ -61,10 +59,10 @@ export default function ValueStrip() {
               <div
                 key={idx}
                 style={{
-                  backgroundColor: "rgba(14, 35, 28, 0.82)",
-                  backdropFilter: "blur(16px)",
-                  WebkitBackdropFilter: "blur(16px)",
-                  border: "1px solid rgba(212, 175, 55, 0.25)",
+                  backgroundColor: "rgba(7, 29, 23, 0.60)",
+                  backdropFilter: "blur(14px)",
+                  WebkitBackdropFilter: "blur(14px)",
+                  border: "1px solid rgba(212, 175, 55, 0.3)",
                   borderRadius: "var(--radius-lg)",
                   padding: "2.2rem 1.8rem",
                   boxShadow: "0 12px 32px rgba(0, 0, 0, 0.35)",

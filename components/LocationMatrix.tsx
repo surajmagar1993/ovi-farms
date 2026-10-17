@@ -60,9 +60,7 @@ export default function LocationMatrix() {
       id="location"
       style={{
         padding: "6rem 0",
-        backgroundColor: "rgba(7, 29, 23, 0.72)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
+        backgroundColor: "transparent",
         borderTop: "1px solid rgba(212, 175, 55, 0.15)",
         borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         color: "#FFFFFF",
@@ -112,9 +110,9 @@ export default function LocationMatrix() {
         {/* 4 Forts Heritage Banner */}
         <div
           style={{
-            backgroundColor: "rgba(11, 42, 34, 0.82)",
-            backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
+            backgroundColor: "rgba(7, 29, 23, 0.65)",
+            backdropFilter: "blur(14px)",
+            WebkitBackdropFilter: "blur(14px)",
             border: "1.5px solid rgba(238, 93, 43, 0.4)",
             borderRadius: "var(--radius-xl)",
             padding: "clamp(1.8rem, 4vw, 3rem)",
@@ -171,7 +169,7 @@ export default function LocationMatrix() {
               <div
                 key={idx}
                 style={{
-                  backgroundColor: "rgba(7, 29, 23, 0.82)",
+                  backgroundColor: "rgba(4, 18, 14, 0.60)",
                   backdropFilter: "blur(12px)",
                   WebkitBackdropFilter: "blur(12px)",
                   borderRadius: "var(--radius-lg)",
@@ -241,7 +239,7 @@ export default function LocationMatrix() {
             <div
               key={idx}
               style={{
-                backgroundColor: "rgba(11, 42, 34, 0.82)",
+                backgroundColor: "rgba(7, 29, 23, 0.60)",
                 backdropFilter: "blur(12px)",
                 WebkitBackdropFilter: "blur(12px)",
                 border: "1px solid rgba(212, 175, 55, 0.25)",
@@ -291,7 +289,7 @@ export default function LocationMatrix() {
           style={{
             textAlign: "center",
             padding: "2rem",
-            backgroundColor: "rgba(14, 35, 28, 0.85)",
+            backgroundColor: "rgba(7, 29, 23, 0.65)",
             backdropFilter: "blur(14px)",
             WebkitBackdropFilter: "blur(14px)",
             borderRadius: "var(--radius-lg)",

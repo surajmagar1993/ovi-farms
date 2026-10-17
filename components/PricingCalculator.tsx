@@ -48,9 +48,7 @@ export default function PricingCalculator({ whatsapp = "+919876543210", onOpenBo
       id="pricing"
       style={{
         padding: "6rem 0",
-        backgroundColor: "rgba(7, 29, 23, 0.70)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
+        backgroundColor: "transparent",
         borderTop: "1px solid rgba(212, 175, 55, 0.15)",
         borderBottom: "1px solid rgba(212, 175, 55, 0.15)",
         position: "relative",
@@ -102,9 +100,9 @@ export default function PricingCalculator({ whatsapp = "+919876543210", onOpenBo
           style={{
             maxWidth: "880px",
             margin: "0 auto",
-            backgroundColor: "rgba(14, 35, 28, 0.85)",
-            backdropFilter: "blur(18px)",
-            WebkitBackdropFilter: "blur(18px)",
+            backgroundColor: "rgba(7, 29, 23, 0.65)",
+            backdropFilter: "blur(14px)",
+            WebkitBackdropFilter: "blur(14px)",
             border: "1.5px solid rgba(212, 175, 55, 0.35)",
             borderRadius: "var(--radius-xl)",
             padding: "clamp(1.8rem, 4vw, 3rem)",
