@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  /* Brand Primary: Deep Forest Emerald */
+  --color-primary-900: #071D17;
+  --color-primary-800: #0B2A22;
+  --color-primary-700: #0F3B30;  /* Main Brand Emerald */
+  --color-primary-600: #165243;
+  --color-primary-500: #1D6B57;
+
+  /* Brand Accent: Champagne & Antique Gold */
+  --color-gold-600: #A88424;
+  --color-gold-500: #C5A059;
+  --color-gold-400: #D4AF37;     /* Bright Gold Accent */
+  --color-gold-300: #E6CE78;
+  --color-gold-100: #FAF4E2;
+
+  /* Nature Neutrals: Warm Sand & Alabaster */
+  --color-sand-50:  #FDFBF7;     /* Page Background */
+  --color-sand-100: #F7F3EB;     /* Card Surface */
+  --color-sand-200: #EFE9DC;     /* Subtle Borders */
+  --color-sand-300: #DFD7C4;
+  --color-sand-800: #2C2824;     /* Deep Neutral Text */
+
+  /* Dark Luxury (Hero, Footer, Club sections, Admin) */
+  --color-dark-950: #090F0D;
+  --color-dark-900: #0E1714;
+  --color-dark-800: #16231F;
+  --color-dark-700: #21332D;
+
+  /* Semantic Plot States */
+  --color-status-available: #10B981;
+  --color-status-reserved:  #F59E0B;
+  --color-status-sold:      #64748B;
+  
+  /* Text Colors */
+  --text-primary: #1C2420;
+  --text-secondary: #56645E;
+  --text-muted: #84948D;
+  --text-inverse: #FFFFFF;
+  --text-gold: #D4AF37;
+
+  /* Glassmorphism */
+  --glass-light-bg: rgba(255, 255, 255, 0.82);
+  --glass-light-border: rgba(255, 255, 255, 0.5);
+  --glass-dark-bg: rgba(14, 23, 20, 0.82);
+  --glass-dark-border: rgba(212, 175, 55, 0.25);
+  --glass-blur: blur(16px);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(7, 29, 23, 0.05);
+  --shadow-md: 0 8px 24px rgba(7, 29, 23, 0.08);
+  --shadow-lg: 0 16px 40px rgba(7, 29, 23, 0.12);
+  --shadow-gold: 0 8px 28px rgba(212, 175, 55, 0.28);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* Typography Families */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Fluid Typography Clamps (Mobile to 4K TV) */
+  --font-h1: clamp(2.25rem, 5vw + 1rem, 4.5rem);
+  --font-h2: clamp(1.85rem, 3.5vw + 0.5rem, 3.25rem);
+  --font-h3: clamp(1.35rem, 2vw + 0.4rem, 2.15rem);
+  --font-h4: clamp(1.1rem, 1.2vw + 0.3rem, 1.45rem);
+  --font-body: clamp(0.95rem, 0.4vw + 0.85rem, 1.15rem);
+  --font-small: clamp(0.82rem, 0.2vw + 0.75rem, 0.95rem);
+
+  /* 120Hz Animation Timing */
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 180ms;
+  --duration-normal: 320ms;
+  --duration-slow: 600ms;
+}
+
+/* Base Resets & Hardware Smoothing */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--color-sand-50);
+  color: var(--text-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: var(--color-sand-50);
+}
+
+/* Maximum container constraint for ultrawides and 4K TVs */
+.container-constrained {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 4vw, 3rem);
+  padding-right: clamp(1rem, 4vw, 3rem);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0E1714;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-600);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-400);
+}
+
+/* Universal Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform var(--duration-fast) var(--ease-luxury),
+              box-shadow var(--duration-fast) var(--ease-luxury),
+              background var(--duration-fast) var(--ease-luxury),
+              color var(--duration-fast) var(--ease-luxury);
+  will-change: transform;
+}
+
+.btn:active {
+  transform: scale(0.97) translate3d(0, 0, 0);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--color-gold-500) 0%, var(--color-gold-400) 100%);
+  color: var(--color-dark-950);
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.25);
+}
+.btn-gold:hover {
+  transform: translateY(-2px) translate3d(0, 0, 0);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+}
+
+.btn-emerald {
+  background: var(--color-primary-700);
+  color: #FFFFFF;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: var(--shadow-sm);
+}
+.btn-emerald:hover {
+  background: var(--color-primary-600);
+  transform: translateY(-2px) translate3d(0, 0, 0);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-ghost-gold {
+  background: transparent;
+  color: var(--color-gold-400);
+  border: 1.5px solid var(--color-gold-400);
+}
+.btn-ghost-gold:hover {
+  background: rgba(212, 175, 55, 0.12);
+  transform: translateY(-2px) translate3d(0, 0, 0);
+}
+
+/* Glass Panels */
+.glass-panel-dark {
+  background: var(--glass-dark-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-dark-border);
+  border-radius: var(--radius-lg);
+}
+
+.glass-panel-light {
+  background: var(--glass-light-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-light-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* Section Headings */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-gold-500);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: var(--font-h2);
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.section-title.light {
+  color: #FFFFFF;
+}
+
+.section-subtitle {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+  max-width: 680px;
+  line-height: 1.65;
+}
+
+.section-subtitle.light {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Plot state pills */
+.badge-available {
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.badge-reserved {
+  background: rgba(245, 158, 11, 0.15);
+  color: #D97706;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badge-sold {
+  background: rgba(100, 116, 139, 0.15);
+  color: #64748B;
+  border: 1px solid rgba(100, 116, 139, 0.35);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Animations for 120Hz */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px) translate3d(0, 0, 0); }
+  to { opacity: 1; transform: translateY(0) translate3d(0, 0, 0); }
+}
+
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+}
+
+.pulse-gold-badge {
+  animation: pulseGold 2.5s infinite;
+}

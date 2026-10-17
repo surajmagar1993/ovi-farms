@@ -1,0 +1,270 @@
+{
+  "brand": {
+    "name": "OVI FARMS",
+    "tagline": "Where Heritage Meets Living",
+    "subtagline": "Private Plotted Estate Framed by Nature",
+    "established": "2021",
+    "reraNumber": "Clear-Title Registered Estate • Bhor Taluka",
+    "logo": {
+      "icon": "circle-tree",
+      "text": "OVI FARMS",
+      "subtitle": "PREMIER FARMSTEAD",
+      "imageUrl": "/images/ovi-farms-logo-transparent.png",
+      "darkImageUrl": "/images/ovi-farms-logo.png",
+      "badgeUrl": "/images/ovi-farms-badge-dark.png"
+    }
+  },
+  "contact": {
+    "phone": "+91 73505 00045",
+    "alternatePhone": "+91 73505 00046",
+    "phones": [
+      "+91 73505 00045",
+      "+91 73505 00046",
+      "+91 73505 00040"
+    ],
+    "whatsapp": "+917350500045",
+    "email": "surendra@ovifarms.com",
+    "address": "Ghavar Region, Near Bhor, 40 Mins from Pune, Maharashtra",
+    "hours": "Open 7 Days: 9:00 AM – 6:30 PM (Private Site Visits by Appointment)"
+  },
+  "hero": {
+    "tag": "EXCLUSIVE LAND PLOTTING • BHOR",
+    "headline": "Where Heritage Meets Living",
+    "subheadline": "Rare large-format plotted estates (11,000 sq.ft onwards) in the monsoon-rich valley of Ghavar, near Bhor. Encircled by the legendary Maratha forts of Rajgad & Torna, just 40 minutes from Pune.",
+    "pricingBadge": "Plots from 11,000 Sq.Ft Onwards",
+    "highlightPills": [
+      "11,000 Sq.Ft Onwards Parcels",
+      "Clubhouse & Horizon Infinity Pool",
+      "7 Fruit Plants Per Plot with Smart Drip",
+      "40 Mins from Pune • 20 Mins from Nasrapur",
+      "100% Gated Haven with Grand Archway"
+    ],
+    "videoUrl": "/videos/hero-project.mp4",
+    "fallbackVideoUrl": "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-green-nature-and-trees-42686-large.mp4",
+    "coverImage": "/images/hero-sahyadri-valley.jpg",
+    "sunsetArchway": "/images/grand-archway-sunset.jpg"
+  },
+  "brochures": {
+    "mainBrochure": "/docs/ovi-farms-brochure.pdf",
+    "masterplanA3": "/docs/ovi-farms-masterplan-a3.pdf"
+  },
+  "agroServices": [
+    {
+      "id": "7fruits",
+      "title": "7 Fruit Plants Per Plot",
+      "desc": "Every plot comes pre-planted with 7 thriving fruit plants including Kesar Mango, Rajapuri Mango, Chiku, Jackfruit, and Malaysian Green Dwarf Coconut.",
+      "image": "/images/fruit-plantation-orchard.jpg"
+    },
+    {
+      "id": "drip",
+      "title": "Smart Israeli Drip Irrigation",
+      "desc": "Automated drip lines engineered for optimal water distribution, linked to deep borewells ensuring green orchards year-round.",
+      "image": "/images/fruit-plantation-orchard.jpg"
+    },
+    {
+      "id": "water",
+      "title": "Separate Water Supply System",
+      "desc": "Dedicated independent water pipelines and natural storage reservoir guaranteeing abundant fresh water for every farmstead.",
+      "image": "/images/master-layout-clean.jpg"
+    },
+    {
+      "id": "electricity",
+      "title": "Dedicated Transformer Power",
+      "desc": "High-capacity dedicated electrical transformer infrastructure installed exclusively for the OVI FARMS community.",
+      "image": "/images/grand-archway-day.jpg"
+    }
+  ],
+  "amenities": [
+    {
+      "id": "infinity-pool",
+      "title": "Centerpiece Infinity Pool",
+      "desc": "Edge-less infinity swimming pool overlooking the lush Sahyadri valley with cascading waterfall spillover and poolside leisure deck.",
+      "category": "Wellness",
+      "image": "/images/clubhouse-infinity-pool.jpg"
+    },
+    {
+      "id": "clubhouse-complex",
+      "title": "The Countryside Clubhouse",
+      "desc": "Architectural masterpiece set against the Sahyadri backdrop featuring indoor leisure lounges, entertaining decks, and private club membership.",
+      "category": "Lifestyle",
+      "image": "/images/clubhouse-aerial-overview.jpg"
+    },
+    {
+      "id": "billiards-lounge",
+      "title": "Indoor Games & Billiards Lounge",
+      "desc": "Pool table, carrom board, air hockey, table tennis, and a dedicated PlayStation gaming zone for friends and family.",
+      "category": "Recreation",
+      "image": "/images/billiards-lounge.jpg"
+    },
+    {
+      "id": "stargazing-deck",
+      "title": "Milky Way Stargazing Deck",
+      "desc": "Telescope observation deck positioned in the pure pollution-free night skies of Ghavar for breathtaking celestial viewing.",
+      "category": "Experience",
+      "image": "/images/stargazing-telescope.jpg"
+    },
+    {
+      "id": "bbq-terrace",
+      "title": "Sunken Barbecue & Dining Terrace",
+      "desc": "Illuminated poolside sunken lounge with built-in barbecue station for golden-hour gatherings and outdoor celebrations.",
+      "category": "Dining",
+      "image": "/images/poolside-barbecue-lounge.jpg"
+    },
+    {
+      "id": "sports-machaan",
+      "title": "Multi-Sport Courts & Bird Machaan",
+      "desc": "Regulation basketball and volleyball courts, pickleball zone, children’s adventure play area, and elevated Machaan for bird watching.",
+      "category": "Sports",
+      "image": "/images/clubhouse-aerial-overview.jpg"
+    }
+  ],
+  "infrastructure": [
+    {
+      "id": "grand-archway",
+      "title": "Grand Landmark Entrance Archway",
+      "desc": "Imposing entrance gate with natural stone, wood accents, 24/7 manned security cabin, and CCTV perimeter monitoring.",
+      "image": "/images/grand-archway-sunset.jpg"
+    },
+    {
+      "id": "concrete-roads",
+      "title": "Wide Concrete Internal Roads",
+      "desc": "Durable, high-grade concrete avenue roads with curbside plantations connecting each plot seamlessly to the main highway.",
+      "image": "/images/concrete-internal-roads.jpg"
+    },
+    {
+      "id": "clear-demarcation",
+      "title": "Clear Boundary Pegging & Fencing",
+      "desc": "Every plot is cleanly surveyed, registered, pegged, and enclosed with live green bio-hedges and boundary fencing.",
+      "image": "/images/master-layout-clean.jpg"
+    },
+    {
+      "id": "storm-drainage",
+      "title": "Engineered Storm Drainage",
+      "desc": "Heavy-duty monsoon drainage channels designed specifically for Sahyadri rainfall, preventing water-logging and soil erosion.",
+      "image": "/images/master-layout-clean.jpg"
+    }
+  ],
+  "location": {
+    "region": "Ghavar Valley, Bhor",
+    "city": "Pune",
+    "distanceFromPune": "40 Minutes",
+    "landmarks": [
+      {
+        "name": "Rajgad Fort",
+        "description": "Historical Seat of Maratha Power • West View",
+        "time": "15 Mins",
+        "image": "/images/rajgad-torna-forts.jpg"
+      },
+      {
+        "name": "Torna Fort",
+        "description": "Highest Hill Fort in Pune District • North-West View",
+        "time": "15 Mins",
+        "image": "/images/rajgad-torna-forts.jpg"
+      },
+      {
+        "name": "Nasrapur Junction",
+        "description": "NH-48 Access & Commercial Hub",
+        "time": "20 Mins",
+        "image": "/images/nasrapur-highway.jpg"
+      },
+      {
+        "name": "Proposed Ring Road",
+        "description": "High-Speed Expressway Corridor",
+        "time": "8 KM",
+        "image": "/images/proposed-ring-road.jpg"
+      },
+      {
+        "name": "Scenic Valley Plots",
+        "description": "Panoramic mountain & valley vistas",
+        "time": "Direct On-Site",
+        "image": "/images/scenic-valley-plots.jpg"
+      }
+    ]
+  },
+  "gallery": [
+    {
+      "id": "g1",
+      "title": "Grand Landmark Entrance Archway at Sunset",
+      "category": "Entrance",
+      "url": "/images/grand-archway-sunset.jpg",
+      "isVideo": false
+    },
+    {
+      "id": "g2",
+      "title": "The Countryside Clubhouse & Horizon Infinity Pool",
+      "category": "Clubhouse",
+      "url": "/images/clubhouse-infinity-pool.jpg",
+      "isVideo": false
+    },
+    {
+      "id": "g3",
+      "title": "Sunken Poolside Barbecue Lounge & Dining Terrace",
+      "category": "Lifestyle",
+      "url": "/images/poolside-barbecue-lounge.jpg",
+      "isVideo": false
+    },
+    {
+      "id": "g4",
+      "title": "Stargazing Observatory Deck Under the Milky Way",
+      "category": "Experience",
+      "url": "/images/stargazing-telescope.jpg",
+      "isVideo": false
+    },
+    {
+      "id": "g5",
+      "title": "Veranda Billiards Lounge Overlooking Sports Court",
+      "category": "Sports",
+      "url": "/images/billiards-lounge.jpg",
+      "isVideo": false
+    },
+    {
+      "id": "g6",
+      "title": "Sunset Tea Gazebo Overlooking the Sahyadri Valley",
+      "category": "Vistas",
+      "url": "/images/gazebo-couple-sunset.jpg",
+      "isVideo": false
+    },
+    {
+      "id": "g7",
+      "title": "Master Layout Aerial View with Demarcated Plots",
+      "category": "Layout",
+      "url": "/images/master-layout-clean.jpg",
+      "isVideo": false
+    },
+    {
+      "id": "g8",
+      "title": "Clubhouse Complex, Tennis Court & Green Canopy",
+      "category": "Clubhouse",
+      "url": "/images/clubhouse-aerial-overview.jpg",
+      "isVideo": false
+    },
+    {
+      "id": "g9",
+      "title": "7-Tree Organic Fruit Plantation with Drip Lines",
+      "category": "Agriculture",
+      "url": "/images/fruit-plantation-orchard.jpg",
+      "isVideo": false
+    },
+    {
+      "id": "g10",
+      "title": "Concrete Internal Avenue Roads",
+      "category": "Infrastructure",
+      "url": "/images/concrete-internal-roads.jpg",
+      "isVideo": false
+    },
+    {
+      "id": "g11",
+      "title": "Rajgad & Torna Forts Encircled Valley",
+      "category": "Heritage",
+      "url": "/images/rajgad-torna-forts.jpg",
+      "isVideo": false
+    },
+    {
+      "id": "g12",
+      "title": "Daytime Manned Security Entrance Gate",
+      "category": "Security",
+      "url": "/images/grand-archway-day.jpg",
+      "isVideo": false
+    }
+  ]
+}

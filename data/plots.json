@@ -1,0 +1,206 @@
+[
+  {
+    "id": 1,
+    "plotNumber": "OF-01",
+    "sector": "Rajgad Enclave",
+    "acreage": 0.25,
+    "sqft": 11000,
+    "status": "sold",
+    "facing": "East",
+    "priceInLakhs": 52.5,
+    "plantations": "7 Thriving Trees: 2 Kesar Mango, 2 Rajapuri Mango, 1 Chiku, 1 Jackfruit, 1 Malaysian Green Dwarf Coconut",
+    "roadWidth": "Wide Concrete Internal Road",
+    "features": [
+      "Prime Corner Plot",
+      "Immediate Concrete Road Access",
+      "Active Israeli Drip System"
+    ]
+  },
+  {
+    "id": 2,
+    "plotNumber": "OF-02",
+    "sector": "Rajgad Enclave",
+    "acreage": 0.25,
+    "sqft": 11000,
+    "status": "available",
+    "facing": "East",
+    "priceInLakhs": 52.5,
+    "plantations": "7 Thriving Trees: 2 Kesar Mango, 2 Rajapuri Mango, 1 Chiku, 1 Jackfruit, 1 Malaysian Green Dwarf Coconut",
+    "roadWidth": "Wide Concrete Internal Road",
+    "features": [
+      "East-Facing Sunrise View",
+      "Survey Pegged & Demarcated",
+      "Separate Water Tap Connected"
+    ]
+  },
+  {
+    "id": 3,
+    "plotNumber": "OF-03",
+    "sector": "Rajgad Enclave",
+    "acreage": 0.5,
+    "sqft": 22000,
+    "status": "available",
+    "facing": "North-East",
+    "priceInLakhs": 98.0,
+    "plantations": "14 Thriving Trees: 4 Kesar Mango, 4 Rajapuri Mango, 2 Chiku, 2 Jackfruit, 2 Malaysian Dwarf Coconut",
+    "roadWidth": "Wide Concrete Internal Road",
+    "features": [
+      "Half-Acre Grand Estate",
+      "Panoramic Rajgad Fort View",
+      "Close to Clubhouse & Pool"
+    ]
+  },
+  {
+    "id": 4,
+    "plotNumber": "OF-04",
+    "sector": "Rajgad Enclave",
+    "acreage": 0.25,
+    "sqft": 11000,
+    "status": "reserved",
+    "facing": "North",
+    "priceInLakhs": 54.0,
+    "plantations": "7 Thriving Trees: 2 Kesar Mango, 2 Rajapuri Mango, 1 Chiku, 1 Jackfruit, 1 Malaysian Green Dwarf Coconut",
+    "roadWidth": "Wide Concrete Internal Road",
+    "features": [
+      "North-Facing Vastu Compliant",
+      "Bio-Hedge Boundary Planted",
+      "Transformer Line Ready"
+    ]
+  },
+  {
+    "id": 5,
+    "plotNumber": "OF-05",
+    "sector": "Torna Ridge",
+    "acreage": 0.25,
+    "sqft": 11000,
+    "status": "available",
+    "facing": "North-East",
+    "priceInLakhs": 55.0,
+    "plantations": "7 Thriving Trees: 2 Kesar Mango, 2 Rajapuri Mango, 1 Chiku, 1 Jackfruit, 1 Malaysian Green Dwarf Coconut",
+    "roadWidth": "Wide Concrete Internal Road",
+    "features": [
+      "Elevated Ridge Line",
+      "Sunset Valley Vista",
+      "Dedicated Drip Lines"
+    ]
+  },
+  {
+    "id": 6,
+    "plotNumber": "OF-06",
+    "sector": "Torna Ridge",
+    "acreage": 0.25,
+    "sqft": 11000,
+    "status": "available",
+    "facing": "East",
+    "priceInLakhs": 53.5,
+    "plantations": "7 Thriving Trees: 2 Kesar Mango, 2 Rajapuri Mango, 1 Chiku, 1 Jackfruit, 1 Malaysian Green Dwarf Coconut",
+    "roadWidth": "Wide Concrete Internal Road",
+    "features": [
+      "Adjacent to Central Greens",
+      "Pedestrian Trail Access",
+      "Clear Individual Registry"
+    ]
+  },
+  {
+    "id": 7,
+    "plotNumber": "OF-07",
+    "sector": "Torna Ridge",
+    "acreage": 0.75,
+    "sqft": 33000,
+    "status": "sold",
+    "facing": "East",
+    "priceInLakhs": 145.0,
+    "plantations": "21 Thriving Trees: 6 Kesar Mango, 6 Rajapuri Mango, 3 Chiku, 3 Jackfruit, 3 Malaysian Dwarf Coconut",
+    "roadWidth": "Wide Concrete Internal Road",
+    "features": [
+      "Three-Quarter Acre Estate",
+      "Private Water Reservoir Proximity",
+      "Full Bio-Fencing Complete"
+    ]
+  },
+  {
+    "id": 8,
+    "plotNumber": "OF-08",
+    "sector": "Sinhagad Vista",
+    "acreage": 0.25,
+    "sqft": 11000,
+    "status": "available",
+    "facing": "North",
+    "priceInLakhs": 53.0,
+    "plantations": "7 Thriving Trees: 2 Kesar Mango, 2 Rajapuri Mango, 1 Chiku, 1 Jackfruit, 1 Malaysian Green Dwarf Coconut",
+    "roadWidth": "Wide Concrete Internal Road",
+    "features": [
+      "Level Topography",
+      "High Soil Fertility",
+      "24/7 Security Patrol Corridor"
+    ]
+  },
+  {
+    "id": 9,
+    "plotNumber": "OF-09",
+    "sector": "Sinhagad Vista",
+    "acreage": 0.5,
+    "sqft": 22000,
+    "status": "available",
+    "facing": "East",
+    "priceInLakhs": 99.0,
+    "plantations": "14 Thriving Trees: 4 Kesar Mango, 4 Rajapuri Mango, 2 Chiku, 2 Jackfruit, 2 Malaysian Dwarf Coconut",
+    "roadWidth": "Wide Concrete Internal Road",
+    "features": [
+      "Direct View of Stargazing Deck",
+      "Dual Road Access",
+      "Pre-demarcated Boundary Wall"
+    ]
+  },
+  {
+    "id": 10,
+    "plotNumber": "OF-10",
+    "sector": "Sinhagad Vista",
+    "acreage": 0.25,
+    "sqft": 11000,
+    "status": "reserved",
+    "facing": "North-East",
+    "priceInLakhs": 54.5,
+    "plantations": "7 Thriving Trees: 2 Kesar Mango, 2 Rajapuri Mango, 1 Chiku, 1 Jackfruit, 1 Malaysian Green Dwarf Coconut",
+    "roadWidth": "Wide Concrete Internal Road",
+    "features": [
+      "Premium Corner Plot",
+      "Storm Drainage Culvert Ready",
+      "Ready for Immediate Registration"
+    ]
+  },
+  {
+    "id": 11,
+    "plotNumber": "OF-11",
+    "sector": "Purandar Valley",
+    "acreage": 0.25,
+    "sqft": 11000,
+    "status": "available",
+    "facing": "East",
+    "priceInLakhs": 51.0,
+    "plantations": "7 Thriving Trees: 2 Kesar Mango, 2 Rajapuri Mango, 1 Chiku, 1 Jackfruit, 1 Malaysian Green Dwarf Coconut",
+    "roadWidth": "Wide Concrete Internal Road",
+    "features": [
+      "Serene Valley Breezes",
+      "Rich Organic Topsoil",
+      "Underground Irrigation Feeder"
+    ]
+  },
+  {
+    "id": 12,
+    "plotNumber": "OF-12",
+    "sector": "Purandar Valley",
+    "acreage": 1.0,
+    "sqft": 44000,
+    "status": "available",
+    "facing": "North-East",
+    "priceInLakhs": 195.0,
+    "plantations": "28 Thriving Trees: 8 Kesar Mango, 8 Rajapuri Mango, 4 Chiku, 4 Jackfruit, 4 Malaysian Dwarf Coconut",
+    "roadWidth": "Wide Concrete Internal Road",
+    "features": [
+      "Flagship 1-Acre Countryside Estate",
+      "Private Pond Side",
+      "Unrestricted 360-Degree Mountain Panorama"
+    ]
+  }
+]

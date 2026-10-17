@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Suresh Raina",
+    "phone": "+91 98888 77777",
+    "email": "suresh@sportsclub.com",
+    "type": "Site Visit Booking",
+    "plotInterest": "Plot OF-02 (0.25 Acre)",
+    "preferredDate": "2026-10-15",
+    "preferredSlot": "Morning (10:00 AM)",
+    "cabPickup": "Yes (Complimentary AC Cab from City)",
+    "notes": "New inquiry via web experience",
+    "id": "LEAD-1005",
+    "createdAt": "2026-10-08T18:18:09.174Z",
+    "status": "New"
+  },
+  {
+    "id": "LEAD-1001",
+    "createdAt": "2026-10-08T14:32:00.000Z",
+    "name": "Rajesh Malhotra",
+    "phone": "+91 98201 54321",
+    "email": "rajesh.malhotra@techcorp.com",
+    "type": "Site Visit Booking",
+    "plotInterest": "0.5 Acre (OF-03 / OF-05)",
+    "preferredDate": "2026-10-11",
+    "preferredSlot": "Morning (10:00 AM)",
+    "cabPickup": "Yes (Pickup from Indiranagar)",
+    "status": "Visit Scheduled",
+    "notes": "Looking for weekend farmhouse villa plot for family. Requested chauffeured cab."
+  },
+  {
+    "id": "LEAD-1002",
+    "createdAt": "2026-10-08T11:15:00.000Z",
+    "name": "Dr. Ananya Iyer",
+    "phone": "+91 99402 78910",
+    "email": "ananya.iyer@healthclinic.org",
+    "type": "Brochure Download",
+    "plotInterest": "0.25 Acre (OF-02)",
+    "preferredDate": "",
+    "preferredSlot": "",
+    "cabPickup": "No",
+    "status": "Contacted",
+    "notes": "Downloaded master layout and soil report. Follow-up scheduled for Friday."
+  },
+  {
+    "id": "LEAD-1003",
+    "createdAt": "2026-10-07T16:45:00.000Z",
+    "name": "Vikramaditya Rao",
+    "phone": "+91 97110 33445",
+    "email": "v.rao@capitalinvest.in",
+    "type": "Site Visit Booking",
+    "plotInterest": "1.0 Acre (OF-07 Grand Estate)",
+    "preferredDate": "2026-10-12",
+    "preferredSlot": "Sunset Tour (4:00 PM)",
+    "cabPickup": "No (Self-drive)",
+    "status": "New",
+    "notes": "HNI investor interested in 1-acre agro-forestry returns and lakefront plot."
+  },
+  {
+    "id": "LEAD-1004",
+    "createdAt": "2026-10-07T09:20:00.000Z",
+    "name": "Sunil Narang",
+    "phone": "+91 98450 11223",
+    "email": "sunil.narang@gmail.com",
+    "type": "General Inquiry",
+    "plotInterest": "0.25 Acre",
+    "preferredDate": "",
+    "preferredSlot": "",
+    "cabPickup": "No",
+    "status": "Closed",
+    "notes": "Inquired about RERA sanction and groundwater report. Details sent via WhatsApp."
+  }
+]
