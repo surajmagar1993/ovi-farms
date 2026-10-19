@@ -25,12 +25,17 @@ import {
   Layers,
   Image as ImageIcon,
   Compass,
+  Eye,
+  EyeOff,
+  Edit3,
+  X,
 } from "lucide-react";
 
 export default function AdminPortal() {
   const [authed, setAuthed] = useState<boolean | null>(null);
-  const [email, setEmail] = useState("admin@ovifarms.com");
-  const [password, setPassword] = useState("ovi@farms2026");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [activeTab, setActiveTab] = useState<"leads" | "branding" | "media" | "plots">("leads");
 
@@ -43,6 +48,24 @@ export default function AdminPortal() {
   const [saveMessage, setSaveMessage] = useState("");
   const [exporting, setExporting] = useState(false);
   const [exportingFormat, setExportingFormat] = useState<string | null>(null);
+
+  // Plot Form & Modal States
+  const [plotModalMode, setPlotModalMode] = useState<"add" | "edit" | null>(null);
+  const [plotForm, setPlotForm] = useState({
+    id: 0,
+    plotNumber: "",
+    sector: "Rajgad Enclave",
+    acreage: 0.25,
+    sqft: 11000,
+    status: "available",
+    facing: "East",
+    priceInLakhs: 52.5,
+    plantations: "7 Thriving Trees: 2 Kesar Mango, 2 Rajapuri Mango, 1 Chiku, 1 Jackfruit, 1 Malaysian Green Dwarf Coconut",
+    roadWidth: "Wide Concrete Internal Road",
+    features: "Prime Corner Plot, Immediate Road Access, Active Israeli Drip System",
+  });
+  const [plotSaving, setPlotSaving] = useState(false);
+  const [plotFeedback, setPlotFeedback] = useState("");
 
   // New Media Form state
   const [newMedia, setNewMedia] = useState({
@@ -232,6 +255,111 @@ export default function AdminPortal() {
     }
   };
 
+  const handleOpenAddPlot = () => {
+    const nextNum = plots.length + 1;
+    setPlotForm({
+      id: 0,
+      plotNumber: `OF-${String(nextNum).padStart(2, "0")}`,
+      sector: "Rajgad Enclave",
+      acreage: 0.25,
+      sqft: 11000,
+      status: "available",
+      facing: "East",
+      priceInLakhs: 52.5,
+      plantations: "7 Thriving Trees: 2 Kesar Mango, 2 Rajapuri Mango, 1 Chiku, 1 Jackfruit, 1 Malaysian Green Dwarf Coconut",
+      roadWidth: "Wide Concrete Internal Road",
+      features: "Prime Plot, Immediate Road Access, Active Israeli Drip System",
+    });
+    setPlotFeedback("");
+    setPlotModalMode("add");
+  };
+
+  const handleOpenEditPlot = (plot: any) => {
+    setPlotForm({
+      id: plot.id,
+      plotNumber: plot.plotNumber || "",
+      sector: plot.sector || "Rajgad Enclave",
+      acreage: plot.acreage || 0.25,
+      sqft: plot.sqft || 11000,
+      status: plot.status || "available",
+      facing: plot.facing || "East",
+      priceInLakhs: plot.priceInLakhs || 52.5,
+      plantations: plot.plantations || "",
+      roadWidth: plot.roadWidth || "Wide Concrete Internal Road",
+      features: Array.isArray(plot.features) ? plot.features.join(", ") : (plot.features || ""),
+    });
+    setPlotFeedback("");
+    setPlotModalMode("edit");
+  };
+
+  const handleAcreageChange = (val: number) => {
+    const sqftEstimate = Math.round(val * 44000);
+    setPlotForm((prev) => ({
+      ...prev,
+      acreage: val,
+      sqft: sqftEstimate,
+    }));
+  };
+
+  const handleSavePlot = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPlotSaving(true);
+    setPlotFeedback("");
+    try {
+      const payload = {
+        ...plotForm,
+        acreage: Number(plotForm.acreage),
+        sqft: Number(plotForm.sqft),
+        priceInLakhs: Number(plotForm.priceInLakhs),
+        features: plotForm.features.split(",").map((s: string) => s.trim()).filter(Boolean),
+      };
+
+      const method = plotModalMode === "edit" ? "PUT" : "POST";
+      const res = await fetch("/api/plots", {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.plots) {
+        setPlots(data.plots);
+        setPlotModalMode(null);
+        setSaveMessage(`✓ Plot ${plotForm.plotNumber} ${plotModalMode === "edit" ? "updated" : "created"} successfully!`);
+        setTimeout(() => setSaveMessage(""), 4000);
+      } else {
+        setPlotFeedback(data.error || "Failed to save plot.");
+      }
+    } catch (err: any) {
+      setPlotFeedback(err.message || "Failed to save plot.");
+    } finally {
+      setPlotSaving(false);
+    }
+  };
+
+  const handleDeletePlot = async (plot: any) => {
+    const confirmed = window.confirm(`Are you sure you want to permanently delete Plot ${plot.plotNumber} (${plot.acreage} Acre, ${plot.sqft} sq.ft)?\n\nThis will remove it from the public masterplan and layout.`);
+    if (!confirmed) return;
+
+    try {
+      const res = await fetch("/api/plots", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ plotId: plot.id }),
+      });
+      const data = await res.json();
+      if (res.ok && data.plots) {
+        setPlots(data.plots);
+        setSaveMessage(`✓ Plot ${plot.plotNumber} deleted successfully.`);
+        setTimeout(() => setSaveMessage(""), 4000);
+      } else {
+        alert(data.error || "Failed to delete plot.");
+      }
+    } catch (err: any) {
+      alert("Error deleting plot: " + err.message);
+    }
+  };
+
   // Filtered Leads
   const filteredLeads = leads.filter((lead) => {
     const matchesSearch =
@@ -315,6 +443,8 @@ export default function AdminPortal() {
               <input
                 type="email"
                 required
+                placeholder="admin@ovifarms.com"
+                autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{
@@ -334,22 +464,48 @@ export default function AdminPortal() {
               <label style={{ display: "block", fontSize: "0.8rem", color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem" }}>
                 PASSWORD
               </label>
-              <input
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "0.8rem",
-                  borderRadius: "8px",
-                  backgroundColor: "#16231F",
-                  border: "1px solid rgba(255,255,255,0.15)",
-                  color: "#FFFFFF",
-                  fontSize: "0.95rem",
-                  outline: "none",
-                }}
-              />
+              <div style={{ position: "relative" }}>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  required
+                  placeholder="Enter admin password"
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  style={{
+                    width: "100%",
+                    padding: "0.8rem",
+                    paddingRight: "2.8rem",
+                    borderRadius: "8px",
+                    backgroundColor: "#16231F",
+                    border: "1px solid rgba(255,255,255,0.15)",
+                    color: "#FFFFFF",
+                    fontSize: "0.95rem",
+                    outline: "none",
+                  }}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  style={{
+                    position: "absolute",
+                    right: "0.8rem",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "transparent",
+                    border: "none",
+                    color: "rgba(255,255,255,0.6)",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "0.2rem",
+                  }}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
             </div>
 
             <button type="submit" className="btn btn-gold" style={{ width: "100%", padding: "0.95rem", marginTop: "0.5rem" }}>
@@ -1189,12 +1345,39 @@ export default function AdminPortal() {
         {/* ==================== TAB 4: PLOT INVENTORY CONTROLLER ==================== */}
         {activeTab === "plots" && (
           <div style={{ backgroundColor: "#16231F", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "var(--radius-xl)", padding: "2rem" }}>
-            <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.5rem", color: "#FFFFFF", marginBottom: "0.5rem" }}>
-              Live Plot Availability Controller
-            </h3>
-            <p style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.6)", marginBottom: "1.8rem" }}>
-              Toggle plot states here to immediately reflect real-time status on the public masterplan explorer.
-            </p>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "1rem", marginBottom: "1.5rem" }}>
+              <div>
+                <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.5rem", color: "#FFFFFF", marginBottom: "0.4rem" }}>
+                  Plot Inventory, Sizes & Masterplan Manager
+                </h3>
+                <p style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.6)", margin: 0, maxWidth: "700px" }}>
+                  Edit plot dimensions (Acreage & Sq.Ft), update base pricing, add new plots, delete plots, or toggle real-time availability on the public masterplan.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={handleOpenAddPlot}
+                className="btn btn-gold"
+                style={{
+                  padding: "0.65rem 1.25rem",
+                  fontSize: "0.88rem",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  cursor: "pointer",
+                }}
+              >
+                <Plus size={16} />
+                <span>Add Demarcated Plot</span>
+              </button>
+            </div>
+
+            {saveMessage && (
+              <div style={{ backgroundColor: "rgba(16, 185, 129, 0.15)", border: "1px solid #10B981", color: "#10B981", padding: "0.8rem", borderRadius: "8px", fontSize: "0.9rem", marginBottom: "1.5rem" }}>
+                {saveMessage}
+              </div>
+            )}
 
             <div style={{ overflowX: "auto" }}>
               <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "0.88rem" }}>
@@ -1202,11 +1385,12 @@ export default function AdminPortal() {
                   <tr style={{ backgroundColor: "#0E1714", borderBottom: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.6)" }}>
                     <th style={{ padding: "1rem" }}>Plot #</th>
                     <th style={{ padding: "1rem" }}>Sector</th>
-                    <th style={{ padding: "1rem" }}>Size</th>
+                    <th style={{ padding: "1rem" }}>Size & Dimensions</th>
                     <th style={{ padding: "1rem" }}>Facing</th>
                     <th style={{ padding: "1rem" }}>Base Price</th>
                     <th style={{ padding: "1rem" }}>Status</th>
-                    <th style={{ padding: "1rem" }}>Quick Toggle Actions</th>
+                    <th style={{ padding: "1rem" }}>Availability Toggle</th>
+                    <th style={{ padding: "1rem", textAlign: "right" }}>Manage Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -1217,7 +1401,10 @@ export default function AdminPortal() {
                       </td>
                       <td style={{ padding: "1rem", color: "#FFFFFF" }}>{plot.sector}</td>
                       <td style={{ padding: "1rem" }}>
-                        {plot.acreage} Acre <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.5)" }}>({plot.sqft} sq.ft)</span>
+                        <strong style={{ color: "#FFFFFF" }}>{plot.acreage} Acre</strong>{" "}
+                        <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.5)" }}>
+                          ({Number(plot.sqft || 0).toLocaleString()} sq.ft)
+                        </span>
                       </td>
                       <td style={{ padding: "1rem", color: "rgba(255,255,255,0.8)" }}>{plot.facing}</td>
                       <td style={{ padding: "1rem", fontFamily: "var(--font-mono)", color: "#FFFFFF" }}>
@@ -1232,8 +1419,9 @@ export default function AdminPortal() {
                         <div style={{ display: "flex", gap: "0.4rem" }}>
                           <button
                             onClick={() => handleTogglePlotStatus(plot.id, "available")}
+                            title="Set to Available"
                             style={{
-                              padding: "0.3rem 0.6rem",
+                              padding: "0.3rem 0.55rem",
                               borderRadius: "4px",
                               backgroundColor: plot.status === "available" ? "#10B981" : "#1E293B",
                               color: "#FFFFFF",
@@ -1247,8 +1435,9 @@ export default function AdminPortal() {
                           </button>
                           <button
                             onClick={() => handleTogglePlotStatus(plot.id, "reserved")}
+                            title="Set to Reserved"
                             style={{
-                              padding: "0.3rem 0.6rem",
+                              padding: "0.3rem 0.55rem",
                               borderRadius: "4px",
                               backgroundColor: plot.status === "reserved" ? "#F59E0B" : "#1E293B",
                               color: "#FFFFFF",
@@ -1262,8 +1451,9 @@ export default function AdminPortal() {
                           </button>
                           <button
                             onClick={() => handleTogglePlotStatus(plot.id, "sold")}
+                            title="Set to Sold Out"
                             style={{
-                              padding: "0.3rem 0.6rem",
+                              padding: "0.3rem 0.55rem",
                               borderRadius: "4px",
                               backgroundColor: plot.status === "sold" ? "#64748B" : "#1E293B",
                               color: "#FFFFFF",
@@ -1277,10 +1467,432 @@ export default function AdminPortal() {
                           </button>
                         </div>
                       </td>
+                      <td style={{ padding: "1rem", textAlign: "right" }}>
+                        <div style={{ display: "inline-flex", gap: "0.5rem" }}>
+                          <button
+                            type="button"
+                            onClick={() => handleOpenEditPlot(plot)}
+                            title="Edit Plot Details & Size"
+                            style={{
+                              backgroundColor: "rgba(212, 175, 55, 0.15)",
+                              border: "1px solid rgba(212, 175, 55, 0.4)",
+                              color: "#D4AF37",
+                              padding: "0.35rem 0.7rem",
+                              borderRadius: "6px",
+                              cursor: "pointer",
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: "0.3rem",
+                              fontSize: "0.78rem",
+                              fontWeight: 600,
+                              transition: "all 0.2s ease",
+                            }}
+                          >
+                            <Edit3 size={13} />
+                            <span>Edit</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleDeletePlot(plot)}
+                            title="Delete Plot"
+                            style={{
+                              backgroundColor: "rgba(239, 68, 68, 0.12)",
+                              border: "1px solid rgba(239, 68, 68, 0.35)",
+                              color: "#F87171",
+                              padding: "0.35rem 0.65rem",
+                              borderRadius: "6px",
+                              cursor: "pointer",
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: "0.3rem",
+                              fontSize: "0.78rem",
+                              fontWeight: 600,
+                              transition: "all 0.2s ease",
+                            }}
+                          >
+                            <Trash2 size={13} />
+                            <span>Delete</span>
+                          </button>
+                        </div>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+        )}
+
+        {/* ==================== PLOT EDIT / ADD MODAL ==================== */}
+        {plotModalMode && (
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: "rgba(0, 0, 0, 0.8)",
+              backdropFilter: "blur(6px)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 9999,
+              padding: "1rem",
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: "#16231F",
+                border: "1px solid rgba(212, 175, 55, 0.4)",
+                borderRadius: "16px",
+                width: "100%",
+                maxWidth: "680px",
+                maxHeight: "90vh",
+                overflowY: "auto",
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.7)",
+                padding: "2rem",
+              }}
+            >
+              {/* Modal Header */}
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem", borderBottom: "1px solid rgba(255,255,255,0.1)", paddingBottom: "1rem" }}>
+                <div>
+                  <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.4rem", color: "#FFFFFF", margin: 0 }}>
+                    {plotModalMode === "edit" ? `Edit Plot: ${plotForm.plotNumber}` : "Add New Demarcated Plot"}
+                  </h3>
+                  <div style={{ fontSize: "0.82rem", color: "#D4AF37", marginTop: "0.2rem" }}>
+                    {plotModalMode === "edit" ? "Update plot dimensions, sizes (Acreage & Sq.Ft), pricing & features" : "Demarcate and publish a new plot to the live masterplan"}
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setPlotModalMode(null)}
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    color: "rgba(255,255,255,0.6)",
+                    cursor: "pointer",
+                    padding: "0.4rem",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              {plotFeedback && (
+                <div style={{ backgroundColor: "rgba(239, 68, 68, 0.2)", border: "1px solid #EF4444", color: "#FCA5A5", padding: "0.75rem", borderRadius: "8px", fontSize: "0.85rem", marginBottom: "1.2rem" }}>
+                  {plotFeedback}
+                </div>
+              )}
+
+              {/* Form */}
+              <form onSubmit={handleSavePlot} style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+                  {/* Plot Number */}
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem", fontWeight: 600 }}>
+                      PLOT IDENTIFIER / NUMBER *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. OF-09"
+                      value={plotForm.plotNumber}
+                      onChange={(e) => setPlotForm({ ...plotForm, plotNumber: e.target.value })}
+                      style={{
+                        width: "100%",
+                        padding: "0.75rem",
+                        backgroundColor: "#0E1714",
+                        border: "1px solid rgba(255,255,255,0.15)",
+                        borderRadius: "8px",
+                        color: "#FFFFFF",
+                        fontSize: "0.9rem",
+                        outline: "none",
+                      }}
+                    />
+                  </div>
+
+                  {/* Sector */}
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem", fontWeight: 600 }}>
+                      SECTOR / ZONE *
+                    </label>
+                    <select
+                      value={plotForm.sector}
+                      onChange={(e) => setPlotForm({ ...plotForm, sector: e.target.value })}
+                      style={{
+                        width: "100%",
+                        padding: "0.75rem",
+                        backgroundColor: "#0E1714",
+                        border: "1px solid rgba(255,255,255,0.15)",
+                        borderRadius: "8px",
+                        color: "#FFFFFF",
+                        fontSize: "0.9rem",
+                        outline: "none",
+                      }}
+                    >
+                      <option value="Rajgad Enclave">Rajgad Enclave</option>
+                      <option value="Torna Ridge">Torna Ridge</option>
+                      <option value="Sinhagad Vista">Sinhagad Vista</option>
+                      <option value="Purandar Valley">Purandar Valley</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+                  {/* Acreage */}
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem", fontWeight: 600 }}>
+                      SIZE IN ACRES * (e.g. 0.25, 0.5, 1.0)
+                    </label>
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0.05"
+                      required
+                      value={plotForm.acreage}
+                      onChange={(e) => handleAcreageChange(parseFloat(e.target.value) || 0)}
+                      style={{
+                        width: "100%",
+                        padding: "0.75rem",
+                        backgroundColor: "#0E1714",
+                        border: "1px solid rgba(255,255,255,0.15)",
+                        borderRadius: "8px",
+                        color: "#FFFFFF",
+                        fontSize: "0.9rem",
+                        outline: "none",
+                      }}
+                    />
+                  </div>
+
+                  {/* Area in Sq.Ft */}
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem", fontWeight: 600 }}>
+                      AREA IN SQ.FT * (e.g. 11000, 22000)
+                    </label>
+                    <input
+                      type="number"
+                      step="1"
+                      min="500"
+                      required
+                      value={plotForm.sqft}
+                      onChange={(e) => setPlotForm({ ...plotForm, sqft: parseInt(e.target.value) || 0 })}
+                      style={{
+                        width: "100%",
+                        padding: "0.75rem",
+                        backgroundColor: "#0E1714",
+                        border: "1px solid rgba(255,255,255,0.15)",
+                        borderRadius: "8px",
+                        color: "#FFFFFF",
+                        fontSize: "0.9rem",
+                        outline: "none",
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+                  {/* Base Price */}
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem", fontWeight: 600 }}>
+                      BASE PRICE (₹ IN LAKHS) *
+                    </label>
+                    <input
+                      type="number"
+                      step="0.1"
+                      min="1"
+                      required
+                      placeholder="e.g. 52.5"
+                      value={plotForm.priceInLakhs}
+                      onChange={(e) => setPlotForm({ ...plotForm, priceInLakhs: parseFloat(e.target.value) || 0 })}
+                      style={{
+                        width: "100%",
+                        padding: "0.75rem",
+                        backgroundColor: "#0E1714",
+                        border: "1px solid rgba(255,255,255,0.15)",
+                        borderRadius: "8px",
+                        color: "#FFFFFF",
+                        fontSize: "0.9rem",
+                        outline: "none",
+                      }}
+                    />
+                  </div>
+
+                  {/* Facing */}
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem", fontWeight: 600 }}>
+                      VASTU FACING DIRECTION *
+                    </label>
+                    <select
+                      value={plotForm.facing}
+                      onChange={(e) => setPlotForm({ ...plotForm, facing: e.target.value })}
+                      style={{
+                        width: "100%",
+                        padding: "0.75rem",
+                        backgroundColor: "#0E1714",
+                        border: "1px solid rgba(255,255,255,0.15)",
+                        borderRadius: "8px",
+                        color: "#FFFFFF",
+                        fontSize: "0.9rem",
+                        outline: "none",
+                      }}
+                    >
+                      <option value="East">East</option>
+                      <option value="West">West</option>
+                      <option value="North">North</option>
+                      <option value="South">South</option>
+                      <option value="North-East">North-East</option>
+                      <option value="South-East">South-East</option>
+                      <option value="North-West">North-West</option>
+                      <option value="South-West">South-West</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+                  {/* Status */}
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem", fontWeight: 600 }}>
+                      AVAILABILITY STATUS *
+                    </label>
+                    <select
+                      value={plotForm.status}
+                      onChange={(e) => setPlotForm({ ...plotForm, status: e.target.value })}
+                      style={{
+                        width: "100%",
+                        padding: "0.75rem",
+                        backgroundColor: "#0E1714",
+                        border: "1px solid rgba(255,255,255,0.15)",
+                        borderRadius: "8px",
+                        color: "#FFFFFF",
+                        fontSize: "0.9rem",
+                        outline: "none",
+                      }}
+                    >
+                      <option value="available">Available (Green)</option>
+                      <option value="reserved">Reserved (Amber)</option>
+                      <option value="sold">Sold Out (Grey)</option>
+                    </select>
+                  </div>
+
+                  {/* Road Width */}
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem", fontWeight: 600 }}>
+                      INTERNAL ACCESS ROAD
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Wide Concrete Internal Road"
+                      value={plotForm.roadWidth}
+                      onChange={(e) => setPlotForm({ ...plotForm, roadWidth: e.target.value })}
+                      style={{
+                        width: "100%",
+                        padding: "0.75rem",
+                        backgroundColor: "#0E1714",
+                        border: "1px solid rgba(255,255,255,0.15)",
+                        borderRadius: "8px",
+                        color: "#FFFFFF",
+                        fontSize: "0.9rem",
+                        outline: "none",
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* Plantations */}
+                <div>
+                  <label style={{ display: "block", fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem", fontWeight: 600 }}>
+                    PLANTATIONS & AGRO-FORESTRY SPECIES
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. 7 Thriving Trees: 2 Kesar Mango, 2 Rajapuri Mango, 1 Chiku, 1 Jackfruit, 1 Coconut"
+                    value={plotForm.plantations}
+                    onChange={(e) => setPlotForm({ ...plotForm, plantations: e.target.value })}
+                    style={{
+                      width: "100%",
+                      padding: "0.75rem",
+                      backgroundColor: "#0E1714",
+                      border: "1px solid rgba(255,255,255,0.15)",
+                      borderRadius: "8px",
+                      color: "#FFFFFF",
+                      fontSize: "0.9rem",
+                      outline: "none",
+                    }}
+                  />
+                </div>
+
+                {/* Features */}
+                <div>
+                  <label style={{ display: "block", fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem", fontWeight: 600 }}>
+                    KEY HIGHLIGHTS / FEATURES (Comma-separated)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Prime Corner Plot, Panoramic Fort View, Israeli Drip Active"
+                    value={plotForm.features}
+                    onChange={(e) => setPlotForm({ ...plotForm, features: e.target.value })}
+                    style={{
+                      width: "100%",
+                      padding: "0.75rem",
+                      backgroundColor: "#0E1714",
+                      border: "1px solid rgba(255,255,255,0.15)",
+                      borderRadius: "8px",
+                      color: "#FFFFFF",
+                      fontSize: "0.9rem",
+                      outline: "none",
+                    }}
+                  />
+                  <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.45)", marginTop: "0.25rem" }}>
+                    Separate items with commas. Example: Lakefront View, Corner Location, Ready Drip
+                  </div>
+                </div>
+
+                {/* Modal Buttons */}
+                <div style={{ display: "flex", justifyContent: "flex-end", gap: "0.8rem", marginTop: "1rem", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "1.2rem" }}>
+                  <button
+                    type="button"
+                    onClick={() => setPlotModalMode(null)}
+                    style={{
+                      padding: "0.7rem 1.4rem",
+                      borderRadius: "8px",
+                      backgroundColor: "transparent",
+                      border: "1px solid rgba(255,255,255,0.2)",
+                      color: "rgba(255,255,255,0.8)",
+                      cursor: "pointer",
+                      fontSize: "0.88rem",
+                    }}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={plotSaving}
+                    className="btn btn-gold"
+                    style={{
+                      padding: "0.7rem 1.6rem",
+                      fontSize: "0.88rem",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {plotSaving ? (
+                      <span>Saving Plot...</span>
+                    ) : (
+                      <>
+                        <CheckCircle2 size={16} />
+                        <span>{plotModalMode === "edit" ? "Save Changes" : "Publish Plot"}</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         )}

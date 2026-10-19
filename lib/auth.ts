@@ -3,9 +3,9 @@ import { cookies } from "next/headers";
 const ADMIN_TOKEN_COOKIE = "ovi_admin_session";
 const VALID_TOKEN = "ovi_admin_token_2026_secure";
 
-// Default admin credentials (can be overridden via environment variables)
-export const DEFAULT_ADMIN_EMAIL = "admin@ovifarms.com";
-export const DEFAULT_ADMIN_PASSWORD = "ovi@farms2026";
+// Admin credentials (configurable via environment variables)
+export const DEFAULT_ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@ovifarms.com";
+export const DEFAULT_ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "ovi@farms2026";
 
 export async function isAuthenticated(): Promise<boolean> {
   const cookieStore = await cookies();

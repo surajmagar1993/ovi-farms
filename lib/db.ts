@@ -50,7 +50,68 @@ export async function getPlots() {
 
 export async function updatePlotStatus(plotId: number, status: "available" | "reserved" | "sold") {
   const plots = await getPlots();
-  const updatedPlots = plots.map((p: any) => (p.id === plotId ? { ...p, status } : p));
+  const updatedPlots = plots.map((p: any) => (p.id === Number(plotId) ? { ...p, status } : p));
+  const filePath = path.join(DATA_DIR, "plots.json");
+  await writeJsonAtomic(filePath, updatedPlots);
+  return updatedPlots;
+}
+
+export async function updatePlot(plotData: any) {
+  const plots = await getPlots();
+  const plotId = Number(plotData.id);
+  const updatedPlots = plots.map((p: any) => {
+    if (p.id === plotId) {
+      return {
+        ...p,
+        ...plotData,
+        id: plotId,
+        acreage: Number(plotData.acreage) || p.acreage,
+        sqft: Number(plotData.sqft) || p.sqft,
+        priceInLakhs: Number(plotData.priceInLakhs) || p.priceInLakhs,
+        features: Array.isArray(plotData.features)
+          ? plotData.features
+          : typeof plotData.features === "string"
+          ? plotData.features.split(",").map((s: string) => s.trim()).filter(Boolean)
+          : p.features || [],
+      };
+    }
+    return p;
+  });
+  const filePath = path.join(DATA_DIR, "plots.json");
+  await writeJsonAtomic(filePath, updatedPlots);
+  return updatedPlots;
+}
+
+export async function addPlot(newPlotData: any) {
+  const plots = await getPlots();
+  const maxId = plots.reduce((max: number, p: any) => Math.max(max, Number(p.id) || 0), 0);
+  const newPlot = {
+    ...newPlotData,
+    id: maxId + 1,
+    plotNumber: newPlotData.plotNumber || `OF-${String(maxId + 1).padStart(2, "0")}`,
+    sector: newPlotData.sector || "Rajgad Enclave",
+    acreage: Number(newPlotData.acreage) || 0.25,
+    sqft: Number(newPlotData.sqft) || 11000,
+    status: newPlotData.status || "available",
+    facing: newPlotData.facing || "East",
+    priceInLakhs: Number(newPlotData.priceInLakhs) || 52.5,
+    plantations: newPlotData.plantations || "7 Thriving Trees: 2 Kesar Mango, 2 Rajapuri Mango, 1 Chiku, 1 Jackfruit, 1 Coconut",
+    roadWidth: newPlotData.roadWidth || "Wide Concrete Internal Road",
+    features: Array.isArray(newPlotData.features)
+      ? newPlotData.features
+      : typeof newPlotData.features === "string"
+      ? newPlotData.features.split(",").map((s: string) => s.trim()).filter(Boolean)
+      : ["Prime Plot", "Immediate Concrete Road Access", "Water & Drip System Active"],
+  };
+  plots.push(newPlot);
+  const filePath = path.join(DATA_DIR, "plots.json");
+  await writeJsonAtomic(filePath, plots);
+  return plots;
+}
+
+export async function deletePlot(plotId: number) {
+  const plots = await getPlots();
+  const updatedPlots = plots.filter((p: any) => p.id !== Number(plotId));
   const filePath = path.join(DATA_DIR, "plots.json");
   await writeJsonAtomic(filePath, updatedPlots);
   return updatedPlots;
