@@ -508,7 +508,7 @@ export default function AdminPortal() {
             </div>
           )}
 
-          <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "1.2rem", textAlign: "left" }}>
+          <form onSubmit={handleLogin} autoComplete="off" style={{ display: "flex", flexDirection: "column", gap: "1.2rem", textAlign: "left" }}>
             <div>
               <label style={{ display: "block", fontSize: "0.8rem", color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem" }}>
                 ADMIN EMAIL
@@ -517,7 +517,7 @@ export default function AdminPortal() {
                 type="email"
                 required
                 placeholder="Enter admin email"
-                autoComplete="email"
+                autoComplete="off"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{
@@ -542,7 +542,7 @@ export default function AdminPortal() {
                   type={showPassword ? "text" : "password"}
                   required
                   placeholder="Enter admin password"
-                  autoComplete="current-password"
+                  autoComplete="new-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   style={{
