@@ -1066,18 +1066,18 @@ export default function AdminPortal() {
                               lead.status === "New"
                                 ? "#1E293B"
                                 : lead.status === "Visit Scheduled"
-                                ? "rgba(16, 185, 129, 0.2)"
-                                : lead.status === "Contacted"
-                                ? "rgba(245, 158, 11, 0.2)"
-                                : "rgba(100, 116, 139, 0.2)",
+                                  ? "rgba(16, 185, 129, 0.2)"
+                                  : lead.status === "Contacted"
+                                    ? "rgba(245, 158, 11, 0.2)"
+                                    : "rgba(100, 116, 139, 0.2)",
                             color:
                               lead.status === "New"
                                 ? "#94A3B8"
                                 : lead.status === "Visit Scheduled"
-                                ? "#10B981"
-                                : lead.status === "Contacted"
-                                ? "#F59E0B"
-                                : "#CBD5E1",
+                                  ? "#10B981"
+                                  : lead.status === "Contacted"
+                                    ? "#F59E0B"
+                                    : "#CBD5E1",
                             border: "1px solid rgba(255,255,255,0.2)",
                             fontWeight: 700,
                             fontSize: "0.8rem",
