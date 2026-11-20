@@ -22,6 +22,7 @@ import {
   Trash2,
   ExternalLink,
   ShieldAlert,
+  ShieldCheck,
   Layers,
   Image as ImageIcon,
   Compass,
@@ -37,7 +38,18 @@ export default function AdminPortal() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState("");
-  const [activeTab, setActiveTab] = useState<"leads" | "branding" | "media" | "plots">("leads");
+  const [activeTab, setActiveTab] = useState<"leads" | "branding" | "media" | "plots" | "security">("leads");
+
+  // Security Credentials state
+  const [currentAdminEmail, setCurrentAdminEmail] = useState("");
+  const [securityForm, setSecurityForm] = useState({
+    adminEmail: "",
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+  const [securityLoading, setSecurityLoading] = useState(false);
+  const [securityMessage, setSecurityMessage] = useState({ text: "", type: "" });
 
   // Data states
   const [leads, setLeads] = useState<any[]>([]);
@@ -82,6 +94,10 @@ export default function AdminPortal() {
       .then((data) => {
         setAuthed(data.authenticated);
         if (data.authenticated) {
+          if (data.adminEmail) {
+            setCurrentAdminEmail(data.adminEmail);
+            setSecurityForm((prev) => ({ ...prev, adminEmail: data.adminEmail }));
+          }
           loadAdminData();
         }
       })
@@ -122,12 +138,69 @@ export default function AdminPortal() {
       const data = await res.json();
       if (res.ok) {
         setAuthed(true);
+        if (email) {
+          setCurrentAdminEmail(email);
+          setSecurityForm((prev) => ({ ...prev, adminEmail: email }));
+        }
         loadAdminData();
       } else {
         setLoginError(data.error || "Invalid login credentials.");
       }
     } catch (err: any) {
       setLoginError(err.message || "Failed to log in.");
+    }
+  };
+
+  const handleUpdateCredentials = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSecurityMessage({ text: "", type: "" });
+
+    if (!securityForm.currentPassword) {
+      setSecurityMessage({ text: "Please enter your current password.", type: "error" });
+      return;
+    }
+
+    if (securityForm.newPassword && securityForm.newPassword !== securityForm.confirmPassword) {
+      setSecurityMessage({ text: "New passwords do not match.", type: "error" });
+      return;
+    }
+
+    if (securityForm.newPassword && securityForm.newPassword.trim().length < 6) {
+      setSecurityMessage({ text: "New password must be at least 6 characters.", type: "error" });
+      return;
+    }
+
+    setSecurityLoading(true);
+
+    try {
+      const res = await fetch("/api/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "update-credentials",
+          currentPassword: securityForm.currentPassword,
+          newEmail: securityForm.adminEmail,
+          newPassword: securityForm.newPassword,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        setSecurityMessage({ text: "Admin credentials updated successfully!", type: "success" });
+        setCurrentAdminEmail(data.email || securityForm.adminEmail);
+        setSecurityForm({
+          adminEmail: data.email || securityForm.adminEmail,
+          currentPassword: "",
+          newPassword: "",
+          confirmPassword: "",
+        });
+      } else {
+        setSecurityMessage({ text: data.error || "Failed to update credentials.", type: "error" });
+      }
+    } catch (err: any) {
+      setSecurityMessage({ text: err.message || "An unexpected error occurred.", type: "error" });
+    } finally {
+      setSecurityLoading(false);
     }
   };
 
@@ -443,7 +516,7 @@ export default function AdminPortal() {
               <input
                 type="email"
                 required
-                placeholder="admin@ovifarms.com"
+                placeholder="Enter admin email"
                 autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -742,6 +815,26 @@ export default function AdminPortal() {
           >
             <Compass size={16} />
             <span>Plot Inventory Controller ({plots.length})</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab("security")}
+            style={{
+              padding: "0.65rem 1.4rem",
+              borderRadius: "var(--radius-md)",
+              fontSize: "0.9rem",
+              fontWeight: 600,
+              cursor: "pointer",
+              border: activeTab === "security" ? "1.5px solid #D4AF37" : "1px solid transparent",
+              backgroundColor: activeTab === "security" ? "#16231F" : "transparent",
+              color: activeTab === "security" ? "#D4AF37" : "rgba(255,255,255,0.7)",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+            }}
+          >
+            <ShieldCheck size={16} />
+            <span>Admin Security & Credentials</span>
           </button>
         </div>
 
@@ -1890,6 +1983,150 @@ export default function AdminPortal() {
                         <span>{plotModalMode === "edit" ? "Save Changes" : "Publish Plot"}</span>
                       </>
                     )}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {/* ==================== TAB 5: ADMIN SECURITY & CREDENTIALS ==================== */}
+        {activeTab === "security" && (
+          <div style={{ maxWidth: "720px" }}>
+            <div style={{ backgroundColor: "#16231F", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "var(--radius-xl)", padding: "2rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.5rem" }}>
+                <ShieldCheck size={26} color="#D4AF37" />
+                <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.5rem", color: "#FFFFFF", margin: 0 }}>
+                  Admin Security & Credentials
+                </h3>
+              </div>
+              <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.88rem", marginBottom: "1.8rem" }}>
+                Update your administrative login email and password. Passwords are saved with strong SHA-512 cryptographic salting.
+              </p>
+
+              {securityMessage.text && (
+                <div
+                  style={{
+                    backgroundColor: securityMessage.type === "success" ? "rgba(34, 197, 94, 0.15)" : "rgba(239, 68, 68, 0.15)",
+                    color: securityMessage.type === "success" ? "#4ADE80" : "#F87171",
+                    border: `1px solid ${securityMessage.type === "success" ? "rgba(34, 197, 94, 0.3)" : "rgba(239, 68, 68, 0.3)"}`,
+                    padding: "0.85rem 1rem",
+                    borderRadius: "8px",
+                    fontSize: "0.9rem",
+                    marginBottom: "1.5rem",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                  }}
+                >
+                  {securityMessage.type === "success" ? <CheckCircle2 size={18} /> : <ShieldAlert size={18} />}
+                  <span>{securityMessage.text}</span>
+                </div>
+              )}
+
+              <form onSubmit={handleUpdateCredentials} style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
+                <div>
+                  <label style={{ display: "block", fontSize: "0.8rem", color: "#D4AF37", fontWeight: 600, letterSpacing: "0.05em", marginBottom: "0.4rem" }}>
+                    ADMIN LOGIN EMAIL
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={securityForm.adminEmail}
+                    onChange={(e) => setSecurityForm({ ...securityForm, adminEmail: e.target.value })}
+                    style={{
+                      width: "100%",
+                      padding: "0.85rem 1rem",
+                      borderRadius: "8px",
+                      backgroundColor: "#0E1714",
+                      border: "1px solid rgba(255,255,255,0.15)",
+                      color: "#FFFFFF",
+                      fontSize: "0.95rem",
+                      outline: "none",
+                    }}
+                  />
+                  <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.4)", marginTop: "0.25rem", display: "block" }}>
+                    The email address used to log into this admin console.
+                  </span>
+                </div>
+
+                <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "1.2rem" }}>
+                  <label style={{ display: "block", fontSize: "0.8rem", color: "#D4AF37", fontWeight: 600, letterSpacing: "0.05em", marginBottom: "0.4rem" }}>
+                    CURRENT PASSWORD (REQUIRED TO CONFIRM CHANGES)
+                  </label>
+                  <input
+                    type="password"
+                    required
+                    placeholder="Enter current password"
+                    value={securityForm.currentPassword}
+                    onChange={(e) => setSecurityForm({ ...securityForm, currentPassword: e.target.value })}
+                    style={{
+                      width: "100%",
+                      padding: "0.85rem 1rem",
+                      borderRadius: "8px",
+                      backgroundColor: "#0E1714",
+                      border: "1px solid rgba(255,255,255,0.15)",
+                      color: "#FFFFFF",
+                      fontSize: "0.95rem",
+                      outline: "none",
+                    }}
+                  />
+                </div>
+
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.8rem", color: "#D4AF37", fontWeight: 600, letterSpacing: "0.05em", marginBottom: "0.4rem" }}>
+                      NEW PASSWORD (OPTIONAL)
+                    </label>
+                    <input
+                      type="password"
+                      placeholder="Leave blank to keep current"
+                      value={securityForm.newPassword}
+                      onChange={(e) => setSecurityForm({ ...securityForm, newPassword: e.target.value })}
+                      style={{
+                        width: "100%",
+                        padding: "0.85rem 1rem",
+                        borderRadius: "8px",
+                        backgroundColor: "#0E1714",
+                        border: "1px solid rgba(255,255,255,0.15)",
+                        color: "#FFFFFF",
+                        fontSize: "0.95rem",
+                        outline: "none",
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ display: "block", fontSize: "0.8rem", color: "#D4AF37", fontWeight: 600, letterSpacing: "0.05em", marginBottom: "0.4rem" }}>
+                      CONFIRM NEW PASSWORD
+                    </label>
+                    <input
+                      type="password"
+                      placeholder="Re-enter new password"
+                      value={securityForm.confirmPassword}
+                      onChange={(e) => setSecurityForm({ ...securityForm, confirmPassword: e.target.value })}
+                      style={{
+                        width: "100%",
+                        padding: "0.85rem 1rem",
+                        borderRadius: "8px",
+                        backgroundColor: "#0E1714",
+                        border: "1px solid rgba(255,255,255,0.15)",
+                        color: "#FFFFFF",
+                        fontSize: "0.95rem",
+                        outline: "none",
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div style={{ marginTop: "1rem" }}>
+                  <button
+                    type="submit"
+                    disabled={securityLoading}
+                    className="btn btn-gold"
+                    style={{ padding: "0.85rem 1.8rem", opacity: securityLoading ? 0.7 : 1 }}
+                  >
+                    <Lock size={16} />
+                    <span>{securityLoading ? "Updating Security..." : "Save Admin Credentials"}</span>
                   </button>
                 </div>
               </form>
