@@ -509,15 +509,21 @@ export default function AdminPortal() {
           )}
 
           <form onSubmit={handleLogin} autoComplete="off" style={{ display: "flex", flexDirection: "column", gap: "1.2rem", textAlign: "left" }}>
+            {/* Hidden dummy fields to neutralize aggressive browser autofill */}
+            <input type="text" style={{ display: "none" }} tabIndex={-1} aria-hidden="true" />
+            <input type="password" style={{ display: "none" }} tabIndex={-1} aria-hidden="true" />
+
             <div>
               <label style={{ display: "block", fontSize: "0.8rem", color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem" }}>
                 ADMIN EMAIL
               </label>
               <input
-                type="email"
+                id="ovi-admin-email"
+                name="ovi_admin_email_field"
+                type="text"
                 required
-                placeholder="Enter admin email"
-                autoComplete="off"
+                placeholder=""
+                autoComplete="one-time-code"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{
@@ -539,9 +545,11 @@ export default function AdminPortal() {
               </label>
               <div style={{ position: "relative" }}>
                 <input
+                  id="ovi-admin-secret"
+                  name="ovi_admin_secret_field"
                   type={showPassword ? "text" : "password"}
                   required
-                  placeholder="Enter admin password"
+                  placeholder=""
                   autoComplete="new-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}

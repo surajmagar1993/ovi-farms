@@ -38,8 +38,8 @@ export async function getAdminCredentials(): Promise<AdminCredentials> {
   }
 
   // Initial credentials from environment variables or defaults
-  const email = process.env.ADMIN_EMAIL || "admin@ovifarms.com";
-  const rawPassword = process.env.ADMIN_PASSWORD || "ovi@farms2026";
+  const email = process.env.ADMIN_EMAIL || "surendra@ovifarms.com";
+  const rawPassword = process.env.ADMIN_PASSWORD || "OviFarms@2026";
   const salt = crypto.randomBytes(16).toString("hex");
   const passwordHash = hashPassword(rawPassword, salt);
 
